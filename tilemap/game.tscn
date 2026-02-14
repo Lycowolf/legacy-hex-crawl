@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
+[ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="9_cjsgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpd6c"]
 atlas = ExtResource("4_x6q1n")
@@ -449,6 +450,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyko4"]
+atlas = ExtResource("9_cjsgn")
+region = Rect2(11, 801, 234, 158)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3k7wx"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="Game" type="Node2D" unique_id=1030314897]
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=996976796]
@@ -479,3 +487,36 @@ position = Vector2(0, -13.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_nfu3c")
 animation = &"none"
+
+[node name="EncounterPanel" type="TextureRect" parent="." unique_id=2143472344]
+offset_left = 118.0
+offset_top = 42.0
+offset_right = 1073.2532
+offset_bottom = 687.0
+texture = SubResource("AtlasTexture_jyko4")
+
+[node name="TextLeft" type="Label" parent="EncounterPanel" unique_id=406116135]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = 68.0
+offset_right = 407.0
+offset_bottom = -165.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+label_settings = SubResource("LabelSettings_3k7wx")
+autowrap_mode = 3
+
+[node name="TextRight" type="Label" parent="EncounterPanel" unique_id=121689158]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -405.25317
+offset_top = 67.0
+offset_right = -96.253174
+offset_bottom = -166.0
+text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+label_settings = SubResource("LabelSettings_3k7wx")
+autowrap_mode = 3
