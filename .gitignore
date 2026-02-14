@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/img/yellow_text.png
+/img/UI assets (1x).png
 /tilemap/Legacy Hextiles/
 /tilemap/*atlas*.png
 ttrpg_legacy_hextiles_*.zip
