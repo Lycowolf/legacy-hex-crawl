@@ -2,5 +2,5 @@
 .godot/
 /android/
 /tilemap/Legacy Hextiles/
-/tilemap/*atlas*
+/tilemap/*atlas*.png
 ttrpg_legacy_hextiles_*.zip
