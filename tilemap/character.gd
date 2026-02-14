@@ -51,6 +51,7 @@ func go_back():
 func on_map_click(map_pos: Vector2i, button: MouseButton):
 	if walking:
 		print('Wait, Im still walking')
+		$Reaction.play("dude")
 		return
 		
 	if map_pos in map.get_surrounding_cells(self.my_pos):
@@ -59,6 +60,7 @@ func on_map_click(map_pos: Vector2i, button: MouseButton):
 		
 	else:
 		print('Too far')
+		$Reaction.play("nope")
 
 func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
 	print('Halfway there')
