@@ -1,0 +1,18 @@
+[gd_resource type="Theme" format=3 uid="uid://dv8m50oyk20xr"]
+
+[ext_resource type="StyleBox" uid="uid://c6uo5pmibiq6u" path="res://book_button_texture.tres" id="1_diuyg"]
+[ext_resource type="StyleBox" uid="uid://dnxo48vwg1sf5" path="res://book_button_texture_active.tres" id="2_70lem"]
+
+[resource]
+Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+Button/colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/font_pressed_color = Color(1, 1, 1, 0)
+Button/font_sizes/font_size = 5
+Button/styles/disabled = ExtResource("1_diuyg")
+Button/styles/focus = ExtResource("2_70lem")
+Button/styles/hover = ExtResource("2_70lem")
+Button/styles/normal = ExtResource("1_diuyg")
+Button/styles/pressed = ExtResource("2_70lem")
+Label/font_sizes/font_size = 30
