@@ -27,12 +27,34 @@ func pos2map(global_pos: Vector2):
 func map2pos(map_pos: Vector2i):
 	return $Ground.to_global($Ground.map_to_local(map_pos)) 
 
-func find_path(start: Vector2i, end: Vector2i):
-	if end in $Ground.get_surrounding_cells(start):
-		return [end]
-	else:
-		return []
+func find_path(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
+	var path : Array[Vector2i] = []
+	while start != end:
+		var dir = first_step_dir(start, end)
+		var next = $Ground.get_neighbor_cell(start, dir)
+		path.append(next)
+		start = next
+	
+	return path
 
+func first_step_dir(start: Vector2i, end: Vector2i):
+	var vec = map2pos(end) - map2pos(start)
+
+	if vec.x < 0:
+		if abs(vec.angle()) > 5*PI/6:
+			return TileSet.CELL_NEIGHBOR_LEFT_SIDE
+		elif vec.y > 0:
+			return TileSet.CELL_NEIGHBOR_BOTTOM_LEFT_SIDE
+		else:
+			return TileSet.CELL_NEIGHBOR_TOP_LEFT_SIDE
+	else:
+		if abs(vec.angle()) < PI/6:
+			return TileSet.CELL_NEIGHBOR_RIGHT_SIDE
+		elif vec.y > 0:
+			return TileSet.CELL_NEIGHBOR_BOTTOM_RIGHT_SIDE
+		else:
+			return TileSet.CELL_NEIGHBOR_TOP_RIGHT_SIDE
+		
 func get_encounters(pos: Vector2i):
 	return encounters.get(pos, [])
 

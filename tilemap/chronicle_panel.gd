@@ -1,4 +1,4 @@
-extends TextureRect
+extends NinePatchRect
 
 # TODO: use made-up names (or loosely translate the czech names)?
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

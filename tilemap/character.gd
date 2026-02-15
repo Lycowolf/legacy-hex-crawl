@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready
 var map = %Map
-var target_pos: Vector2i
+var target_path: Array[Vector2i]
 var my_pos: Vector2i
 var last_pos: Vector2i
 var speed = 150.0
@@ -17,11 +17,11 @@ var walking: bool:
 func _ready() -> void:
 	my_pos = map.pos2map(self.global_position)
 	last_pos = my_pos
-	target_pos = my_pos
+	target_path = []
 
 func _process(delta: float) -> void:
 	if walking:
-		var target = map.map2pos(target_pos)
+		var target = map.map2pos(target_path[0])
 		
 		# set sprite facing
 		if target.x > position.x:
@@ -36,15 +36,16 @@ func _process(delta: float) -> void:
 		position = new_position
 		
 		if position == target:
-			on_reached_tile(target_pos)
+			on_reached_tile(target_path[0])
 
 func go_back():
 	if walking:
-		target_pos = my_pos
+		target_path = [my_pos]
 	else:
-		target_pos = last_pos
+		target_path = [last_pos]
 	
 
+@warning_ignore("unused_parameter")
 func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 	if walking:
 		print('Wait, Im still walking')
@@ -53,12 +54,13 @@ func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 		
 	var path = map.find_path(self.my_pos, map_pos)
 	if path:  
-		self.target_pos = path[0] # just one step for now
+		self.target_path = path
 		walking = true
 	else:
 		print('Too far')
 		$Reaction.play("nope")
 
+@warning_ignore("unused_parameter")
 func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
 	if not %Map.is_accessible(new_pos, true):
 		print('Too scary, not going')
@@ -66,12 +68,15 @@ func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
 
 func on_reached_tile(tile_pos: Vector2i):	
 	last_pos = my_pos
-	my_pos = target_pos
-	walking = false
+	my_pos = tile_pos
+	target_path.pop_front()
+	walking = not target_path.is_empty()
 	%Map.reveal(my_pos, 1)
 	
 	var encounter = map.get_encounters(tile_pos)
 	if encounter:
+		target_path = []
+		walking = false
 		%EncounterPanel.trigger_encounter(encounter[0])
 	
 	# encounter might also trigger:
