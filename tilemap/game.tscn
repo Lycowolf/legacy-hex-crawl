@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bilx8v0bjqmpb"]
 
+[ext_resource type="Script" uid="uid://o8hmuutkh7o3" path="res://tilemap/map.gd" id="1_3k7wx"]
 [ext_resource type="TileSet" uid="uid://d2drunjitsbbk" path="res://tilemap/ground-tiles.tres" id="1_ce7x8"]
 [ext_resource type="TileSet" uid="uid://cerwfnbtrtma4" path="res://tilemap/water-tiles.tres" id="2_x6q1n"]
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
 [ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="9_cjsgn"]
+[ext_resource type="Script" uid="uid://cviasbc33bxvx" path="res://tilemap/encounter_panel.gd" id="10_jyko4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpd6c"]
 atlas = ExtResource("4_x6q1n")
@@ -454,23 +456,34 @@ animations = [{
 atlas = ExtResource("9_cjsgn")
 region = Rect2(11, 801, 234, 158)
 
+[sub_resource type="LabelSettings" id="LabelSettings_d01ds"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_3k7wx"]
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfu3c"]
+atlas = ExtResource("9_cjsgn")
+region = Rect2(328, 981, 16, 24)
+
 [node name="Game" type="Node2D" unique_id=1030314897]
 
-[node name="Ground" type="TileMapLayer" parent="." unique_id=996976796]
+[node name="Map" type="Node2D" parent="." unique_id=1215392468]
 unique_name_in_owner = true
+script = ExtResource("1_3k7wx")
+
+[node name="Ground" type="TileMapLayer" parent="Map" unique_id=996976796]
 scale = Vector2(0.333, 0.333)
 tile_map_data = PackedByteArray("AAAOAAEAAAAUAAEAAAAPAAEAAAAPAAMAAAAQAAIAAAARAAEAAAAPAAMAAAAQAAMAAAAOAAMAAAAUAAEAAAAOAAIAAAAXAAEAAAAPAAIAAAATAAEAAAANAAEAAAAUAAEAAAANAAIAAAAUAAEAAAAMAAMAAAAHAAQAAAANAAMAAAATAAEAAAAOAAQAAAASAAMAAAAOAAUAAAAWAAMAAAAPAAQAAAARAAEAAAAPAAUAAAAUAAEAAAAMAAEAAAAPAAMAAAANAAAAAAAQAAMAAAAOAAAAAAAQAAMAAAAPAAAAAAAPAAMAAAAQAAAAAAAPAAMAAAAQAAQAAAAQAAMAAAALAAMAAAAVAAEAAAALAAQAAAAVAAEAAAAMAAQAAAAVAAEAAAAJAAMAAAAJAAAAAAANAAYAAAAWAAMAAAANAAcAAAAXAAMAAAAOAAYAAAAUAAEAAAAOAAcAAAAYAAMAAAANAAQAAAAVAAEAAAAPAAYAAAAUAAEAAAAQAAYAAAAGAAQAAAAPAAcAAAAGAAQAAAALAAEAAAAWAAEAAAAKAAEAAAAWAAEAAAAMAAAAAAAPAAMAAAALAAAAAAASAAMAAAALAAUAAAABAAAAAAAMAAYAAAAFAAAAAAAKAAQAAAAJAAAAAAANAAgAAAAMAAQAAAAOAAgAAAARAAQAAAAPAAgAAAAGAAQAAAAPAAkAAAALAAQAAAAQAAgAAAASAAQAAAALAAYAAAAIAAAAAAAKAAcAAAACAAAAAAALAAcAAAAIAAMAAAAMAAgAAAAMAAQAAAALAAgAAAAKAAQAAAAKAAgAAAAIAAMAAAAMAAcAAAAKAAQAAAAJAAYAAAAGAAAAAAAJAAUAAAABAAAAAAAJAAQAAAAIAAAAAAAKAAYAAAAGAAAAAAAKAAUAAAAKAAAAAAAJAAcAAAABAAAAAAAIAAMAAAAJAAAAAAAIAAEAAAANAAAAAAAJAAEAAAAPAAEAAAAKAAAAAAAAAAIAAAAJAAAAAAAAAAIAAAAIAAAAAAAPAAEAAAAHAAEAAAANAAAAAAAGAAEAAAAVAAAAAAAGAAIAAAATAAAAAAAHAAIAAAATAAAAAAAIAAIAAAANAAAAAAAGAAAAAAATAAAAAAAHAAAAAAATAAAAAAAGAAMAAAAQAAEAAAAHAAMAAAATAAAAAAAIAAQAAAAPAAAAAAAHAAUAAAAPAAAAAAAHAAQAAAAAAAEAAAAIAAUAAAAGAAAAAAAMAAkAAAAMAAQAAAALAAkAAAARAAQAAAAIAAYAAAAFAAAAAAAHAAcAAAAEAAMAAAAIAAcAAAAHAAAAAAAGAAcAAAAHAAMAAAAHAAYAAAAEAAMAAAAIAAgAAAADAAMAAAAJAAkAAAAIAAMAAAAIAAkAAAANAAMAAAAHAAkAAAAPAAIAAAAHAAgAAAADAAMAAAAJAAgAAAADAAMAAAAFAAcAAAALAAMAAAAFAAgAAAALAAMAAAAEAAcAAAAZAAAAAAAFAAYAAAAYAAAAAAAKAAkAAAANAAQAAAANAAkAAAASAAQAAAAOAAkAAAALAAQAAAAPAAoAAAAMAAQAAAAQAAoAAAAMAAQAAAAOAAoAAAANAAQAAAANAAoAAAATAAQAAAALAAoAAAAQAAQAAAAMAAoAAAAUAAQAAAAFAAIAAAAQAAEAAAAEAAMAAAAOAAEAAAAFAAMAAAAQAAEAAAAFAAEAAAATAAAAAAAFAAAAAAATAAAAAAAEAAEAAAAQAAAAAAAGAAYAAAAKAAMAAAAGAAUAAAAMAAMAAAAFAAUAAAAMAAMAAAAGAAQAAAAMAAMAAAAFAAQAAAAQAAIAAAAEAAUAAAAWAAAAAAAJAAoAAAAPAAIAAAAIAAoAAAAPAAIAAAAHAAoAAAAPAAIAAAAGAAgAAAAKAAMAAAAFAAkAAAAEAAEAAAADAAMAAAAUAAAAAAAEAAQAAAAUAAAAAAACAAQAAAAWAAAAAAADAAQAAAAWAAAAAAAEAAIAAAAGAAEAAAADAAIAAAAKAAEAAAACAAIAAAAEAAEAAAABAAIAAAAJAAIAAAAAAAMAAAAYAAIAAAABAAMAAAABAAEAAAADAAUAAAAPAAEAAAACAAUAAAAAAAMAAAADAAYAAAAAAAMAAAAEAAYAAAAWAAAAAAACAAMAAAABAAEAAAABAAUAAAAZAAIAAAAAAAUAAAAZAAIAAAABAAYAAAATAAIAAAACAAYAAAAAAAMAAAACAAcAAAAAAAMAAAABAAcAAAATAAIAAAABAAgAAAATAAIAAAACAAgAAAAZAAIAAAADAAcAAAAGAAEAAAADAAgAAAAAAAMAAAADAAkAAAAMAAEAAAAEAAkAAAAXAAAAAAAEAAoAAAAOAAEAAAAFAAoAAAAOAAEAAAADAAoAAAAWAAIAAAACAAoAAAAWAAIAAAABAAoAAAAWAAIAAAAAAAoAAAARAAIAAAAAAAkAAAARAAIAAAAAAAgAAAARAAIAAAAAAAYAAAARAAIAAAAAAAQAAAAYAAIAAAAAAAIAAAAPAAIAAAAAAAEAAAAMAAIAAAABAAEAAAAKAAIAAAACAAEAAAAKAAEAAAADAAEAAAAAAAEAAAAEAAAAAAAAAAEAAAADAAAAAAAJAAEAAAACAAAAAAAHAAIAAAABAAAAAAAMAAIAAAAAAAAAAAAPAAIAAAAEAAgAAAAGAAEAAAAGAAoAAAAXAAAAAAABAAkAAAAWAAIAAAACAAkAAAAWAAIAAAAAAAcAAAARAAIAAAABAAQAAAAYAAIAAAAMAAIAAAAZAAEAAAANAAUAAAAUAAMAAAAMAAUAAAARAAEAAAALAAIAAAARAAEAAAAKAAMAAAARAAEAAAAKAAIAAAARAAEAAAAJAAIAAAANAAEAAAAGAAkAAAADAAMAAAAKAAoAAAAKAAQAAAA=")
 tile_set = ExtResource("1_ce7x8")
 
-[node name="WaterAndRoads" type="TileMapLayer" parent="." unique_id=955619827]
+[node name="WaterAndRoads" type="TileMapLayer" parent="Map" unique_id=955619827]
 scale = Vector2(0.333, 0.333)
 tile_map_data = PackedByteArray("AAACAAEAAAAZAAAAACADAAAAAAANAAAAAAACAAIAAAAXAAAAACABAAMAAAAEAAIAACAAAAMAAAASAAEAACAHAAgAAAAKAAAAABAIAAgAAAATAAQAACAJAAkAAAAKAAEAAAAIAAkAAAADAAMAACAKAAoAAAATAAAAAAAGAAkAAAAWAAEAABAGAAoAAAALAAIAADAEAAAAAAAZAAMAABADAAEAAAAYAAMAAAAEAAEAAAABAAQAABAFAAIAAAAWAAMAABAFAAMAAAADAAAAAAAGAAcAAAAIAAAAABAHAAYAAAAAAAQAADAGAAUAAAABAAQAABAFAAUAAAABAAQAACAFAAQAAAAAAAQAAAACAAcAAAAEAAQAAAADAAQAAAAOAAQAAAAEAAMAAAAPAAQAAAADAAMAAAATAAQAAAADAAYAAAASAAQAABACAAUAAAASAAQAACACAAgAAAAOAAQAAAABAAkAAAAKAAQAAAADAAcAAAAPAAQAAAAEAAcAAAAPAAQAAAAFAAcAAAAPAAQAAAAHAAcAAAAFAAQAAAAJAAgAAAALAAQAADAGAAMAAAALAAQAABAIAAcAAAAPAAQAAAAJAAcAAAATAAQAADAKAAYAAAAKAAQAADA=")
 tile_set = ExtResource("2_x6q1n")
 
-[node name="Places" type="TileMapLayer" parent="." unique_id=1952914269]
+[node name="Places" type="TileMapLayer" parent="Map" unique_id=1952914269]
 scale = Vector2(0.333, 0.333)
 tile_map_data = PackedByteArray("AAABAAkAAAAKAAAAAAAGAAMAAAAOAAAAAAAJAAgAAAAMAAEAAAAKAAYAAAABAAEAAAABAAEAAAACAAEAAAADAAYAAAAJAAEAAAAMAAUAAAAFAAEAAAAJAAMAAAARAAEAAAA=")
 tile_set = ExtResource("4_cpd6c")
@@ -489,18 +502,30 @@ sprite_frames = SubResource("SpriteFrames_nfu3c")
 animation = &"none"
 
 [node name="EncounterPanel" type="TextureRect" parent="." unique_id=2143472344]
+unique_name_in_owner = true
+visible = false
 offset_left = 118.0
 offset_top = 42.0
 offset_right = 1073.2532
 offset_bottom = 687.0
 texture = SubResource("AtlasTexture_jyko4")
+script = ExtResource("10_jyko4")
+
+[node name="Title" type="Label" parent="EncounterPanel" unique_id=1849519666]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 61.0
+offset_right = 409.0
+offset_bottom = 107.0
+text = "Big bad encounter!"
+label_settings = SubResource("LabelSettings_d01ds")
 
 [node name="TextLeft" type="Label" parent="EncounterPanel" unique_id=406116135]
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
 offset_left = 98.0
-offset_top = 68.0
+offset_top = 115.0
 offset_right = 407.0
 offset_bottom = -165.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
@@ -520,3 +545,15 @@ offset_bottom = -166.0
 text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 label_settings = SubResource("LabelSettings_3k7wx")
 autowrap_mode = 3
+
+[node name="CloseButton" type="TextureButton" parent="EncounterPanel" unique_id=2076703623]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 570.0
+offset_right = 890.0
+offset_bottom = 653.0
+texture_normal = SubResource("AtlasTexture_nfu3c")
+stretch_mode = 0
+
+[connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
+[connection signal="pressed" from="EncounterPanel/CloseButton" to="EncounterPanel" method="_on_close_button_pressed"]
