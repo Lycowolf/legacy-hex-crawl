@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://cerwfnbtrtma4" path="res://tilemap/water-tiles.tres" id="2_x6q1n"]
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
 [ext_resource type="Texture2D" uid="uid://b5nqiikfhjy0k" path="res://img/horse_4.png" id="4_x6q1n"]
+[ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://tilemap/encounter.gd" id="5_d01ds"]
 [ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://tilemap/character.gd" id="5_jpnab"]
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
@@ -487,6 +488,28 @@ tile_set = ExtResource("2_x6q1n")
 scale = Vector2(0.333, 0.333)
 tile_map_data = PackedByteArray("AAABAAkAAAAKAAAAAAAGAAMAAAAOAAAAAAAJAAgAAAAMAAEAAAAKAAYAAAABAAEAAAABAAEAAAACAAEAAAADAAYAAAAJAAEAAAAMAAUAAAAFAAEAAAAJAAMAAAARAAEAAAA=")
 tile_set = ExtResource("4_cpd6c")
+
+[node name="Encounters" type="Node2D" parent="Map" unique_id=35367963]
+
+[node name="Bridge" type="Node2D" parent="Map/Encounters" unique_id=1547502021]
+position = Vector2(443, 229)
+script = ExtResource("5_d01ds")
+title = "Bridge"
+text = "over troubled water"
+
+[node name="City" type="Node2D" parent="Map/Encounters" unique_id=1230947346]
+position = Vector2(518, 216)
+script = ExtResource("5_d01ds")
+title = "City"
+text = "Not quite metropolis, but still the greatest settlement in this neck of woods."
+metadata/_custom_type_script = "uid://356bsp4u8juu"
+
+[node name="Latin" type="Node2D" parent="Map/Encounters" unique_id=1732298482]
+position = Vector2(221, 231)
+script = ExtResource("5_d01ds")
+title = "Latin in the woods"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+metadata/_custom_type_script = "uid://356bsp4u8juu"
 
 [node name="Horse" type="AnimatedSprite2D" parent="." unique_id=287884568]
 position = Vector2(294, 227)

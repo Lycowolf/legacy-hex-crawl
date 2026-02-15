@@ -66,17 +66,12 @@ func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
 func on_reached_tile(tile_pos: Vector2i):
 	print('Here we are')
 	
-	trigger_encounter(true)
-	# var result = do_encounter()
+	var encounter = map.get_encounters(tile_pos)
+	if encounter:
+		%EncounterPanel.trigger_encounter(encounter[0])
+		
 	# if result.stay:
 	my_pos = target_pos
 	walking = false
 	#else:
 	#	go_back()
-
-func trigger_encounter(long: bool):
-	if long:	
-		%EncounterPanel.show_encounter('Encounter: Latin text',
-		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
-	else:
-		%EncounterPanel.show_encounter('Encounter: short', '10 cm is not that short generally, but for a snake that is pathetic.')

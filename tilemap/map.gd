@@ -4,6 +4,16 @@ signal tile_click
 
 var disabled : bool = false
 
+var encounters: Dictionary
+
+func _ready() -> void:
+	# build encounter index
+	for child in $Encounters.get_children():
+		var pos = pos2map(child.global_position)
+		if not encounters.has(pos):
+			encounters[pos] = []
+		encounters[pos].append(child)
+
 func _input(event: InputEvent) -> void:
 	if !disabled and event is InputEventMouseButton:
 		var bevent = event as InputEventMouseButton
@@ -22,3 +32,6 @@ func find_path(start: Vector2i, end: Vector2i):
 		return [end]
 	else:
 		return []
+
+func get_encounters(pos: Vector2i):
+	return encounters.get(pos, [])

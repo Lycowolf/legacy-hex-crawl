@@ -2,6 +2,9 @@ extends TextureRect
 
 var page_len = 450
 
+func trigger_encounter(encounter: Encounter):
+	show_encounter(encounter.title, encounter.text)
+
 func show_encounter(title, text):
 	$Title.text = title
 	if len(text) < page_len:
@@ -13,7 +16,6 @@ func show_encounter(title, text):
 		$TextRight.text = text.substr(word_break+1)
 	show()
 	%Map.disabled = true
-
 
 func _on_close_button_pressed() -> void:
 	hide()
