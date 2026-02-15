@@ -8,14 +8,25 @@
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
 [ext_resource type="Texture2D" uid="uid://b5nqiikfhjy0k" path="res://img/horse_4.png" id="4_x6q1n"]
 [ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://tilemap/encounter.gd" id="5_d01ds"]
+[ext_resource type="Texture2D" uid="uid://b4ig162uk0nh5" path="res://tilemap/ground_atlas.png" id="5_fdmae"]
 [ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://tilemap/character.gd" id="5_jpnab"]
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
 [ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="9_cjsgn"]
 [ext_resource type="Script" uid="uid://cviasbc33bxvx" path="res://tilemap/encounter_panel.gd" id="10_jyko4"]
-[ext_resource type="LabelSettings" path="res://ui/text_label_settings.tres" id="13_fdmae"]
 [ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://tilemap/chronicle_panel.gd" id="14_rtuec"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtuec"]
+texture = ExtResource("5_fdmae")
+texture_region_size = Vector2i(222, 256)
+2:2/0 = 0
+14:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_400rd"]
+tile_shape = 3
+tile_size = Vector2i(222, 256)
+sources/0 = SubResource("TileSetAtlasSource_rtuec")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cpd6c"]
 atlas = ExtResource("4_x6q1n")
@@ -526,6 +537,10 @@ tile_set = ExtResource("2_x6q1n")
 tile_map_data = PackedByteArray("AAAKAAUAAAAFAAEAAAAHAAMAAAABAAEAAAAFAAIAAAAOAAAAAAAHAAIAAAARAAEAAAABAAIAAAACAAEAAAAGAAUAAAAMAAEAAAAAAAcAAAAKAAAAAAAAAAMAAAAJAAAAAAACAAQAAAAJAAEAAAA=")
 tile_set = ExtResource("4_cpd6c")
 
+[node name="FogOfWar" type="TileMapLayer" parent="Map" unique_id=200545836]
+tile_map_data = PackedByteArray("AAADAAYAAAAOAAMAAAADAAcAAAAOAAMAAAAEAAYAAAAOAAMAAAADAAUAAAAOAAMAAAAFAAYAAAAOAAMAAAAGAAYAAAAOAAMAAAAHAAYAAAAOAAMAAAAHAAUAAAAOAAMAAAAIAAYAAAAOAAMAAAAIAAUAAAAOAAMAAAAEAAcAAAAOAAMAAAACAAEAAAAOAAMAAAACAAIAAAAOAAMAAAADAAIAAAAOAAMAAAACAAYAAAAOAAMAAAABAAYAAAAOAAMAAAABAAIAAAAOAAMAAAAAAAUAAAAOAAMAAAAAAAQAAAAOAAMAAAAAAAMAAAAOAAMAAAAAAAIAAAAOAAMAAAAAAAEAAAAOAAMAAAABAAAAAAAOAAMAAAAAAAAAAAAOAAMAAAACAAAAAAAOAAMAAAADAAAAAAAOAAMAAAAEAAAAAAAOAAMAAAAFAAAAAAAOAAMAAAAGAAAAAAAOAAMAAAAHAAAAAAAOAAMAAAAIAAAAAAAOAAMAAAAJAAAAAAAOAAMAAAAKAAAAAAAOAAMAAAALAAAAAAAOAAMAAAAMAAAAAAAOAAMAAAALAAEAAAAOAAMAAAAMAAEAAAAOAAMAAAAMAAIAAAAOAAMAAAAMAAMAAAAOAAMAAAAMAAQAAAAOAAMAAAAMAAUAAAAOAAMAAAAMAAYAAAAOAAMAAAAMAAcAAAAOAAMAAAALAAcAAAAOAAMAAAAKAAcAAAAOAAMAAAAJAAcAAAAOAAMAAAAIAAcAAAAOAAMAAAAHAAcAAAAOAAMAAAAGAAcAAAAOAAMAAAAFAAcAAAAOAAMAAAAFAAUAAAAOAAMAAAAEAAUAAAAOAAMAAAAEAAQAAAAOAAMAAAADAAMAAAAOAAMAAAACAAcAAAAOAAMAAAABAAcAAAAOAAMAAAAAAAcAAAAOAAMAAAAAAAYAAAAOAAMAAAABAAEAAAAOAAMAAAADAAEAAAAOAAMAAAAEAAEAAAAOAAMAAAAFAAEAAAAOAAMAAAAGAAIAAAAOAAMAAAAGAAEAAAAOAAMAAAAHAAIAAAAOAAMAAAAIAAIAAAAOAAMAAAAIAAEAAAAOAAMAAAAJAAIAAAAOAAMAAAAJAAEAAAAOAAMAAAAKAAEAAAAOAAMAAAAHAAEAAAAOAAMAAAAFAAIAAAAOAAMAAAAEAAIAAAAOAAMAAAAEAAMAAAAOAAMAAAAFAAMAAAAOAAMAAAAFAAQAAAAOAAMAAAAGAAQAAAAOAAMAAAAHAAQAAAAOAAMAAAAGAAMAAAAOAAMAAAAGAAUAAAAOAAMAAAAIAAQAAAAOAAMAAAAIAAMAAAAOAAMAAAAJAAMAAAAOAAMAAAAKAAIAAAAOAAMAAAALAAIAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAKAAYAAAAOAAMAAAAJAAYAAAAOAAMAAAAHAAMAAAAOAAMAAAAJAAQAAAAOAAMAAAAJAAUAAAAOAAMAAAAKAAUAAAAOAAMAAAAKAAQAAAAOAAMAAAAKAAMAAAAOAAMAAAA=")
+tile_set = SubResource("TileSet_400rd")
+
 [node name="Encounters" type="Node2D" parent="Map" unique_id=35367963]
 position = Vector2(-3.8146973e-06, 0)
 scale = Vector2(3, 3)
@@ -597,7 +612,6 @@ offset_top = 115.0
 offset_right = 407.0
 offset_bottom = -165.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-label_settings = ExtResource("13_fdmae")
 autowrap_mode = 3
 
 [node name="TextRight" type="Label" parent="EncounterPanel" unique_id=121689158]
@@ -612,7 +626,6 @@ offset_top = 67.0
 offset_right = -96.253174
 offset_bottom = -166.0
 text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-label_settings = ExtResource("13_fdmae")
 autowrap_mode = 3
 
 [node name="CloseButton" type="TextureButton" parent="EncounterPanel" unique_id=2076703623]
@@ -645,7 +658,6 @@ offset_top = -0.01600027
 offset_right = 128.79198
 offset_bottom = 35.455986
 text = "Chronicle"
-label_settings = ExtResource("13_fdmae")
 horizontal_alignment = 1
 vertical_alignment = 1
 

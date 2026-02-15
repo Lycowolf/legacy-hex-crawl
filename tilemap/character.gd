@@ -5,7 +5,7 @@ var map = %Map
 var target_pos: Vector2i
 var my_pos: Vector2i
 var last_pos: Vector2i
-var speed = 60.0
+var speed = 150.0
 var walking: bool:
 	set(val):
 		walking = val
@@ -68,6 +68,7 @@ func on_reached_tile(tile_pos: Vector2i):
 	last_pos = my_pos
 	my_pos = target_pos
 	walking = false
+	%Map.reveal(my_pos, 1)
 	
 	var encounter = map.get_encounters(tile_pos)
 	if encounter:

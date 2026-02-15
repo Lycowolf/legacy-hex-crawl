@@ -53,3 +53,15 @@ func is_accessible(pos: Vector2i, walk : bool =true, swim : bool =false, fly : b
 		return swim
 		
 	return can_walk and walk
+
+func fog_everywhere():
+	const FOG = Vector2i(14, 3)
+	
+	for pos in $Ground.get_used_cells():
+		$FogOfWar.set_cell(pos, 0, FOG)
+
+func reveal(pos: Vector2i, size=1):
+	$FogOfWar.erase_cell(pos)
+	if size > 0:
+		for neighbor in $FogOfWar.get_surrounding_cells(pos):
+			reveal(neighbor, size-1)
