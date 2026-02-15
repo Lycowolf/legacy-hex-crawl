@@ -35,3 +35,21 @@ func find_path(start: Vector2i, end: Vector2i):
 
 func get_encounters(pos: Vector2i):
 	return encounters.get(pos, [])
+
+func is_accessible(pos: Vector2i, walk : bool =true, swim : bool =false, fly : bool =false):
+	var gnd_data = $Ground.get_cell_tile_data(pos)
+	var wtr_data = $WaterAndRoads.get_cell_tile_data(pos)
+	
+	var needs_swim = wtr_data and wtr_data.get_custom_data('need_swim')
+	var can_walk = gnd_data and gnd_data.get_custom_data('walk')
+	
+	if not gnd_data:
+		return false
+	
+	if fly:
+		return true
+		
+	if can_walk and needs_swim:
+		return swim
+		
+	return can_walk and walk

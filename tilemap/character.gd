@@ -4,6 +4,7 @@ extends AnimatedSprite2D
 var map = %Map
 var target_pos: Vector2i
 var my_pos: Vector2i
+var last_pos: Vector2i
 var speed = 60.0
 var walking: bool:
 	set(val):
@@ -15,6 +16,7 @@ var walking: bool:
 
 func _ready() -> void:
 	my_pos = map.pos2map(self.global_position)
+	last_pos = my_pos
 	target_pos = my_pos
 
 func _process(delta: float) -> void:
@@ -37,10 +39,11 @@ func _process(delta: float) -> void:
 			on_reached_tile(target_pos)
 
 func go_back():
-	if not walking:
-		return
+	if walking:
+		target_pos = my_pos
+	else:
+		target_pos = last_pos
 	
-	target_pos = my_pos
 
 func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 	if walking:
@@ -57,21 +60,18 @@ func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 		$Reaction.play("nope")
 
 func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
-	print('Halfway there')
-	
-	#if tile_not_accessible()
-		#print('Too scary, not going')
-		#go_back()
+	if not %Map.is_accessible(new_pos, true):
+		print('Too scary, not going')
+		go_back()
 
-func on_reached_tile(tile_pos: Vector2i):
-	print('Here we are')
+func on_reached_tile(tile_pos: Vector2i):	
+	last_pos = my_pos
+	my_pos = target_pos
+	walking = false
 	
 	var encounter = map.get_encounters(tile_pos)
 	if encounter:
 		%EncounterPanel.trigger_encounter(encounter[0])
-		
-	# if result.stay:
-	my_pos = target_pos
-	walking = false
-	#else:
+	
+	# encounter might also trigger:
 	#	go_back()
