@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://bcldi1a5s0bhw" path="res://book_button.gd" id="2_vgwq1"]
 
 [node name="BookButton" type="MarginContainer" unique_id=76399862]
-offset_right = 67.0
+z_index = 3
+offset_right = 22.0
 offset_bottom = 22.0
 scale = Vector2(6, 6)
 theme = ExtResource("1_y6t13")

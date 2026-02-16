@@ -3,17 +3,18 @@
 [ext_resource type="Script" uid="uid://o8hmuutkh7o3" path="res://tilemap/map.gd" id="1_3k7wx"]
 [ext_resource type="TileSet" uid="uid://d2drunjitsbbk" path="res://tilemap/ground-tiles.tres" id="1_ce7x8"]
 [ext_resource type="Theme" uid="uid://bt668ikp1cdo" path="res://UI_theme.tres" id="1_dpb14"]
+[ext_resource type="Texture2D" uid="uid://ds00ka3fx3ti" path="res://img/wood-pixelized.jpg" id="1_rtuec"]
 [ext_resource type="TileSet" uid="uid://cerwfnbtrtma4" path="res://tilemap/water-tiles.tres" id="2_x6q1n"]
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
 [ext_resource type="Texture2D" uid="uid://b5nqiikfhjy0k" path="res://img/horse_4.png" id="4_x6q1n"]
-[ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://tilemap/encounter.gd" id="5_d01ds"]
+[ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://encounter.gd" id="5_d01ds"]
 [ext_resource type="Texture2D" uid="uid://b4ig162uk0nh5" path="res://tilemap/ground_atlas.png" id="5_fdmae"]
-[ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://tilemap/character.gd" id="5_jpnab"]
+[ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://character.gd" id="5_jpnab"]
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
+[ext_resource type="Script" uid="uid://cqsai0r3pihno" path="res://tilemap/test_encounter.gd" id="7_400rd"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
-[ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="9_cjsgn"]
-[ext_resource type="Script" uid="uid://cviasbc33bxvx" path="res://tilemap/encounter_panel.gd" id="10_jyko4"]
+[ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://chronicle.gd" id="15_400rd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtuec"]
 texture = ExtResource("5_fdmae")
@@ -466,62 +467,77 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jyko4"]
-atlas = ExtResource("9_cjsgn")
-region = Rect2(11, 801, 234, 158)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfu3c"]
-atlas = ExtResource("9_cjsgn")
-region = Rect2(328, 981, 16, 24)
-
 [node name="Game" type="Node2D" unique_id=1030314897]
+texture_filter = 1
+
+[node name="Background" type="TextureRect" parent="." unique_id=1448905383]
+self_modulate = Color(0.29, 0.21866, 0.1856, 1)
+texture_filter = 2
+offset_right = 2418.0
+offset_bottom = 1105.0
+texture = ExtResource("1_rtuec")
+expand_mode = 1
 
 [node name="Map" type="Node2D" parent="." unique_id=1215392468]
 unique_name_in_owner = true
 texture_filter = 1
-position = Vector2(5.9604645e-08, 0)
-scale = Vector2(0.66, 0.66)
+position = Vector2(12, 12)
 script = ExtResource("1_3k7wx")
 
 [node name="Ground" type="TileMapLayer" parent="Map" unique_id=996976796]
+scale = Vector2(0.66, 0.66)
 tile_map_data = PackedByteArray("AAAAAAEAAAAMAAIAAAABAAEAAAAKAAIAAAACAAEAAAAKAAEAAAADAAEAAAAAAAEAAAAEAAEAAAAQAAAAAAAFAAEAAAAMAAAAAAAGAAEAAAAVAAAAAAAHAAEAAAAPAAAAAAAIAAEAAAANAAAAAAAJAAEAAAAPAAEAAAAKAAEAAAABAAQAAAALAAEAAAACAAQAAAAMAAEAAAAPAAMAAAAAAAMAAAAZAAIAAAAAAAUAAAARAAIAAAAAAAcAAAARAAIAAAABAAMAAAAZAAIAAAABAAUAAAATAAIAAAABAAcAAAAWAAIAAAACAAMAAAAAAAMAAAACAAUAAAAAAAMAAAACAAcAAAAWAAIAAAADAAMAAAAQAAEAAAADAAUAAAAGAAEAAAADAAcAAAAMAAEAAAAEAAMAAAAWAAAAAAAEAAUAAAAZAAAAAAAEAAcAAAAXAAAAAAAFAAMAAAAKAAMAAAAFAAUAAAALAAMAAAAFAAcAAAAEAAEAAAAGAAMAAAAFAAAAAAAGAAUAAAAHAAMAAAAGAAcAAAAOAAIAAAAHAAMAAAAAAAAAAAAHAAUAAAAIAAAAAAAHAAcAAAAPAAIAAAAIAAMAAAAKAAAAAAAIAAUAAAALAAMAAAAIAAcAAAAPAAIAAAAJAAUAAAAMAAMAAAAJAAcAAAAKAAQAAAAKAAMAAAASAAEAAAAKAAUAAAAKAAQAAAAKAAcAAAANAAQAAAALAAMAAAASAAEAAAALAAUAAAALAAQAAAALAAcAAAARAAQAAAAMAAMAAAASAAEAAAAMAAUAAAAPAAQAAAAMAAcAAAAMAAQAAAABAAAAAAAHAAIAAAACAAAAAAAOAAEAAAADAAAAAAAAAAEAAAAEAAAAAAATAAAAAAAFAAAAAAATAAAAAAAGAAAAAAATAAAAAAAHAAAAAAAPAAEAAAAIAAAAAAAAAAIAAAAJAAAAAAAAAAIAAAAKAAAAAAASAAMAAAALAAAAAAAPAAMAAAAAAAAAAAAMAAIAAAABAAIAAAAJAAIAAAACAAIAAAAOAAEAAAADAAIAAAAGAAEAAAAEAAIAAAAQAAEAAAAFAAIAAAATAAAAAAAGAAIAAAAGAAAAAAAHAAIAAAABAAAAAAAIAAIAAAAEAAAAAAAJAAIAAAASAAEAAAAKAAIAAAAXAAEAAAALAAIAAAABAAQAAAAAAAIAAAAFAAIAAAABAAQAAAAAAAMAAAACAAQAAAAAAAMAAAADAAQAAAAWAAAAAAAEAAQAAAAYAAAAAAAFAAQAAAAHAAAAAAAGAAQAAAAJAAAAAAAHAAQAAAAHAAAAAAAIAAQAAAAGAAAAAAAJAAQAAAAKAAMAAAAKAAQAAAASAAEAAAALAAQAAAASAAEAAAAAAAQAAAATAAIAAAABAAYAAAAZAAIAAAACAAYAAAAAAAMAAAADAAYAAAAGAAEAAAAEAAYAAAALAAMAAAAFAAYAAAAKAAMAAAAGAAYAAAADAAMAAAAHAAYAAAAKAAMAAAAIAAYAAAADAAMAAAAJAAYAAAAKAAQAAAAKAAYAAAAUAAQAAAALAAYAAAAMAAQAAAAAAAYAAAATAAIAAAAJAAMAAAAUAAEAAAAMAAIAAAASAAMAAAAMAAAAAAAAAAQAAAAMAAYAAAALAAQAAAAMAAQAAAASAAQAAAA=")
 tile_set = ExtResource("1_ce7x8")
 
 [node name="WaterAndRoads" type="TileMapLayer" parent="Map" unique_id=955619827]
+scale = Vector2(0.66, 0.66)
 tile_map_data = PackedByteArray("AAAJAAcAAAAKAAEAAAAIAAYAAAAGAAIAAAAAAAMAAAAEAAIAACADAAMAAAAAAAQAAAAEAAIAAAABAAAAAAAFAAIAAAALAAQAABAHAAQAAAATAAQAADABAAUAAAAOAAQAAAACAAAAAAANAAAAAAACAAMAAAAOAAQAAAACAAQAAAAOAAQAAAADAAIAAAATAAQAAAAEAAQAAAAWAAMAABAEAAUAAAAJAAAAACACAAYAAAAPAAQAAAADAAYAAAAPAAQAAAAEAAYAAAATAAQAADABAAYAAAAEAAQAAAAHAAMAAAAKAAQAADAEAAEAAAAZAAMAABADAAAAAAABAAQAABADAAEAAAABAAQAACACAAIAAAAJAAIAACABAAMAAAAJAAMAAAACAAEAAAAMAAMAAAAGAAYAAAAKAAAAABAHAAYAAAAWAAIAAAAJAAYAAAAJAAMAACAFAAcAAAAMAAMAABAFAAUAAAABAAQAABAGAAQAAAAFAAQAAAAFAAQAAAATAAQAAAAGAAUAAAAKAAQAABAAAAcAAAAKAAQAAAA=")
 tile_set = ExtResource("2_x6q1n")
 
 [node name="Places" type="TileMapLayer" parent="Map" unique_id=1952914269]
+scale = Vector2(0.66, 0.66)
 tile_map_data = PackedByteArray("AAAKAAUAAAAFAAEAAAAHAAMAAAABAAEAAAAFAAIAAAAOAAAAAAAHAAIAAAARAAEAAAABAAIAAAACAAEAAAAGAAUAAAAMAAEAAAAAAAcAAAAKAAAAAAAAAAMAAAAJAAAAAAACAAQAAAAJAAEAAAA=")
 tile_set = ExtResource("4_cpd6c")
 
 [node name="FogOfWar" type="TileMapLayer" parent="Map" unique_id=200545836]
+visible = false
+scale = Vector2(0.66, 0.66)
 tile_map_data = PackedByteArray("AAADAAYAAAAOAAMAAAADAAcAAAAOAAMAAAAEAAYAAAAOAAMAAAADAAUAAAAOAAMAAAAFAAYAAAAOAAMAAAAGAAYAAAAOAAMAAAAHAAYAAAAOAAMAAAAHAAUAAAAOAAMAAAAIAAYAAAAOAAMAAAAIAAUAAAAOAAMAAAAEAAcAAAAOAAMAAAACAAEAAAAOAAMAAAACAAIAAAAOAAMAAAADAAIAAAAOAAMAAAACAAYAAAAOAAMAAAABAAYAAAAOAAMAAAABAAIAAAAOAAMAAAAAAAUAAAAOAAMAAAAAAAQAAAAOAAMAAAAAAAMAAAAOAAMAAAAAAAIAAAAOAAMAAAAAAAEAAAAOAAMAAAABAAAAAAAOAAMAAAAAAAAAAAAOAAMAAAACAAAAAAAOAAMAAAADAAAAAAAOAAMAAAAEAAAAAAAOAAMAAAAFAAAAAAAOAAMAAAAGAAAAAAAOAAMAAAAHAAAAAAAOAAMAAAAIAAAAAAAOAAMAAAAJAAAAAAAOAAMAAAAKAAAAAAAOAAMAAAALAAAAAAAOAAMAAAAMAAAAAAAOAAMAAAALAAEAAAAOAAMAAAAMAAEAAAAOAAMAAAAMAAIAAAAOAAMAAAAMAAMAAAAOAAMAAAAMAAQAAAAOAAMAAAAMAAUAAAAOAAMAAAAMAAYAAAAOAAMAAAAMAAcAAAAOAAMAAAALAAcAAAAOAAMAAAAKAAcAAAAOAAMAAAAJAAcAAAAOAAMAAAAIAAcAAAAOAAMAAAAHAAcAAAAOAAMAAAAGAAcAAAAOAAMAAAAFAAcAAAAOAAMAAAAFAAUAAAAOAAMAAAAEAAUAAAAOAAMAAAAEAAQAAAAOAAMAAAADAAMAAAAOAAMAAAACAAcAAAAOAAMAAAABAAcAAAAOAAMAAAAAAAcAAAAOAAMAAAAAAAYAAAAOAAMAAAABAAEAAAAOAAMAAAADAAEAAAAOAAMAAAAEAAEAAAAOAAMAAAAFAAEAAAAOAAMAAAAGAAIAAAAOAAMAAAAGAAEAAAAOAAMAAAAHAAIAAAAOAAMAAAAIAAIAAAAOAAMAAAAIAAEAAAAOAAMAAAAJAAIAAAAOAAMAAAAJAAEAAAAOAAMAAAAKAAEAAAAOAAMAAAAHAAEAAAAOAAMAAAAFAAIAAAAOAAMAAAAEAAIAAAAOAAMAAAAEAAMAAAAOAAMAAAAFAAMAAAAOAAMAAAAFAAQAAAAOAAMAAAAGAAQAAAAOAAMAAAAHAAQAAAAOAAMAAAAGAAMAAAAOAAMAAAAGAAUAAAAOAAMAAAAIAAQAAAAOAAMAAAAIAAMAAAAOAAMAAAAJAAMAAAAOAAMAAAAKAAIAAAAOAAMAAAALAAIAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAKAAYAAAAOAAMAAAAJAAYAAAAOAAMAAAAHAAMAAAAOAAMAAAAJAAQAAAAOAAMAAAAJAAUAAAAOAAMAAAAKAAUAAAAOAAMAAAAKAAQAAAAOAAMAAAAKAAMAAAAOAAMAAAA=")
 tile_set = SubResource("TileSet_400rd")
 
-[node name="Encounters" type="Node2D" parent="Map" unique_id=35367963]
-position = Vector2(-3.8146973e-06, 0)
-scale = Vector2(3, 3)
+[node name="Encounters" type="Control" parent="Map" unique_id=1039803573]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2403.0
+offset_bottom = 1079.0
 
 [node name="Bridge" type="Node2D" parent="Map/Encounters" unique_id=1547502021]
-position = Vector2(369.69696, 369.19193)
+position = Vector2(729, 721)
 script = ExtResource("5_d01ds")
 title = "Bridge"
 text = "over troubled water"
 
 [node name="City" type="Node2D" parent="Map/Encounters" unique_id=1230947346]
-position = Vector2(407.0707, 172.22223)
+position = Vector2(808, 343)
 script = ExtResource("5_d01ds")
 title = "City"
 text = "Not quite metropolis, but still the greatest settlement in this neck of woods."
 metadata/_custom_type_script = "uid://356bsp4u8juu"
 
 [node name="Latin" type="Node2D" parent="Map/Encounters" unique_id=1732298482]
-position = Vector2(257.0707, 168.68687)
+position = Vector2(514, 845)
 script = ExtResource("5_d01ds")
 title = "Latin in the woods"
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 metadata/_custom_type_script = "uid://356bsp4u8juu"
+
+[node name="Test" type="Node2D" parent="Map/Encounters" unique_id=97995342]
+position = Vector2(438.00003, 481)
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("7_400rd")
+title = "Test encounter"
+text = "this is not adrill, this is a test"
 
 [node name="Horse" type="AnimatedSprite2D" parent="." unique_id=287884568]
 texture_filter = 1
@@ -537,64 +553,42 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_nfu3c")
 animation = &"none"
 
-[node name="EncounterPanel" type="TextureRect" parent="." unique_id=2143472344]
-unique_name_in_owner = true
-texture_filter = 1
-offset_left = 118.0
-offset_top = 42.0
-offset_right = 1817.0
-offset_bottom = 1035.0
+[node name="Chronicle" type="Button" parent="." unique_id=1550040505]
+offset_left = 2033.0
+offset_top = 939.0
+offset_right = 2116.0
+offset_bottom = 959.0
+scale = Vector2(4, 4)
 theme = ExtResource("1_dpb14")
-texture = SubResource("AtlasTexture_jyko4")
-script = ExtResource("10_jyko4")
+text = "
+"
+script = ExtResource("15_400rd")
 
-[node name="Title" type="Label" parent="EncounterPanel" unique_id=1849519666]
+[node name="Label" type="Label" parent="Chronicle" unique_id=2140786332]
 texture_filter = 2
-layout_mode = 0
-offset_left = 124.0
-offset_top = 57.0
-offset_right = 747.0
-offset_bottom = 162.0
-theme = ExtResource("1_dpb14")
-theme_override_font_sizes/font_size = 48
-text = "Big bad encounter!"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057000004
+anchor_top = 0.16000001
+anchor_right = 0.057000004
+anchor_bottom = 0.16000001
+offset_left = -0.022500515
+offset_top = -0.20000029
+offset_right = 293.14352
+offset_bottom = 55.8
+scale = Vector2(0.25, 0.25)
+text = "Chronicle"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextLeft" type="Label" parent="EncounterPanel" unique_id=406116135]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.0
-offset_left = 130.0
-offset_top = 175.0
-offset_right = 767.0
-offset_bottom = -218.0
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-autowrap_mode = 3
-
-[node name="TextRight" type="Label" parent="EncounterPanel" unique_id=121689158]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -765.0
-offset_top = 71.0
-offset_right = -112.0
-offset_bottom = -217.0
-text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-autowrap_mode = 3
-
-[node name="CloseButton" type="TextureButton" parent="EncounterPanel" unique_id=2076703623]
-layout_mode = 0
-offset_left = 1472.0
-offset_top = 883.0
-offset_right = 1594.0
-offset_bottom = 1022.0
-texture_normal = SubResource("AtlasTexture_nfu3c")
-stretch_mode = 0
+[node name="PopupUILayer" type="Control" parent="." unique_id=221035753]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2002.0
+offset_bottom = 1080.0
 
 [connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
-[connection signal="pressed" from="EncounterPanel/CloseButton" to="EncounterPanel" method="_on_close_button_pressed"]
+[connection signal="choice" from="Map/Encounters/Test" to="Chronicle" method="_on_test_choice"]
+[connection signal="reached_tile" from="Horse" to="Chronicle" method="_on_horse_reached_tile"]
+[connection signal="pressed" from="Chronicle" to="Chronicle" method="_on_pressed"]

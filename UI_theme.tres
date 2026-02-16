@@ -1,8 +1,13 @@
 [gd_resource type="Theme" format=3 uid="uid://bt668ikp1cdo"]
 
+[ext_resource type="StyleBox" uid="uid://rlbjpacx3vg2" path="res://main_ui_button_texture.tres" id="1_6w50i"]
+
 [resource]
+Button/colors/font_color = Color(0, 0, 0, 0)
+Button/font_sizes/font_size = 5
+Button/styles/normal = ExtResource("1_6w50i")
 Label/colors/font_color = Color(0, 0, 0, 1)
-Label/font_sizes/font_size = 32
+Label/font_sizes/font_size = 40
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/bold_font_size = 32
 RichTextLabel/font_sizes/bold_italics_font_size = 32

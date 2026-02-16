@@ -8,13 +8,12 @@
 atlas = ExtResource("2_cncom")
 region = Rect2(11, 801, 234, 158)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfu3c"]
-atlas = ExtResource("2_cncom")
-region = Rect2(328, 981, 16, 24)
-
 [node name="BookPanel" type="TextureRect" unique_id=1160056287]
 unique_name_in_owner = true
 texture_filter = 1
+anchors_preset = -1
+anchor_left = -0.00041666668
+anchor_right = -0.00041666668
 offset_left = 61.0
 offset_top = 38.0
 offset_right = 1760.0
@@ -22,7 +21,19 @@ offset_bottom = 1031.0
 theme = ExtResource("1_ej6pq")
 texture = SubResource("AtlasTexture_jyko4")
 script = ExtResource("3_uhph8")
-choices = Array[String](["choice 1", "choice 2 long text", "c3"])
+choices = Dictionary[String, Callable]({
+"Test long text": Callable(),
+"Test1": Callable()
+})
+title = "Big bad encounter!"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Harum nobis ut et fuga. Et voluptas asperiores eveniet. Illum commodi maiores ut consequuntur sunt. Veniam rem consequatur delectus optio. Error sint voluptas nulla ad quia eius ut maiores. A sint quisquam laborum laboriosam est natus.
+Porro aut itaque quo corporis. Totam labore dolor quam numquam aperiam quae et. Asperiores repellat cumque eligendi voluptatem laboriosam. Aut tenetur tempore nemo.
+
+123456789
+"
+metadata/_edit_horizontal_guides_ = [38.0]
+metadata/_edit_vertical_guides_ = [61.0]
 
 [node name="Title" type="Label" parent="." unique_id=1421674240]
 texture_filter = 2
@@ -37,7 +48,7 @@ text = "Big bad encounter!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextLeft" type="Label" parent="." unique_id=1551718179]
+[node name="TextLeft" type="RichTextLabel" parent="." unique_id=335422687]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -45,11 +56,11 @@ anchor_bottom = 1.0
 offset_left = 130.0
 offset_top = 175.0
 offset_right = 767.0
-offset_bottom = -218.0
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-autowrap_mode = 3
+offset_bottom = 165.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Harum"
 
-[node name="TextRight" type="Label" parent="." unique_id=133215097]
+[node name="TextRight" type="RichTextLabel" parent="." unique_id=275714967]
 texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
@@ -59,17 +70,9 @@ anchor_bottom = 1.0
 offset_left = -765.0
 offset_top = 71.0
 offset_right = -112.0
-offset_bottom = -217.0
-text = "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-autowrap_mode = 3
+offset_bottom = -252.0
+text = "nobis ut et fuga. Et voluptas asperiores eveniet. Illum commodi maiores ut consequuntur sunt. Veniam rem consequatur delectus optio. Error sint voluptas nulla ad quia eius ut maiores. A sint quisquam laborum laboriosam est natus.
+Porro aut itaque quo corporis. Totam labore dolor quam numquam aperiam quae et. Asperiores repellat cumque eligendi voluptatem laboriosam. Aut tenetur tempore nemo.
 
-[node name="CloseButton" type="TextureButton" parent="." unique_id=1437953492]
-layout_mode = 0
-offset_left = 1472.0
-offset_top = 883.0
-offset_right = 1594.0
-offset_bottom = 1022.0
-texture_normal = SubResource("AtlasTexture_nfu3c")
-stretch_mode = 0
-
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+123456789
+"
