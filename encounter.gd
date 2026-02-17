@@ -26,6 +26,7 @@ func trigger_encounter():
 	# The book node is Control-derived. This means it can't position itself if its parent
 	# isn't a Control-derived node.
 	%PopupUILayer.add_child(book)
+	%PopupUILayer.show()
 
 func _on_book_close():
 	pass

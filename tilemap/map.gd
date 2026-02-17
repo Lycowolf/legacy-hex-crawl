@@ -2,8 +2,6 @@ extends Node2D
 
 signal tile_click
 
-var disabled : bool = false
-
 var encounters: Dictionary
 
 func _ready() -> void:
@@ -14,11 +12,10 @@ func _ready() -> void:
 			encounters[pos] = []
 		encounters[pos].append(child)
 
-func _input(event: InputEvent) -> void:
-	if !disabled and event is InputEventMouseButton:
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
 		var bevent = event as InputEventMouseButton
-		if bevent.pressed:  # and map_pos is valid
-			#on_map_click(pos2map(bevent.position), bevent.button_index)
+		if bevent.pressed:
 			emit_signal('tile_click', pos2map(bevent.position), bevent.button_index)
 
 func pos2map(global_pos: Vector2):

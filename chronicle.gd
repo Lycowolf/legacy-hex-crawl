@@ -28,7 +28,6 @@ func generate_text() -> String:
 		event_text += ("In the " + str(months[event[2]]) + " of " + str(event[1]) + ", " + event[3] + ".\n\n")
 	return event_text
 
-
 func _on_pressed() -> void:
 	var book = book_panel_scene.instantiate()
 	book.title = "Chronicle of the realm"
@@ -41,6 +40,7 @@ func _on_pressed() -> void:
 	# The book node is Control-derived. This means it can't position itself if its parent
 	# isn't a Control-derived node.
 	%PopupUILayer.add_child(book)
+	%PopupUILayer.show()
 	
 	
 func ingame_event(type, text):

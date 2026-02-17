@@ -37,8 +37,6 @@ func _init() -> void:
 func _ready() -> void:
 	generate_choice_buttons()
 	reflow_text()
-	if not Engine.is_editor_hint():
-		get_tree().current_scene.get_node("%Map").disabled = true # %Node searches only this scene
 	set_global_position(Vector2i(60, 38), true)
 
 func generate_choice_buttons():
@@ -72,5 +70,5 @@ func reflow_text():
 		$TextRight.text = text.substr(word_break+1)
 
 func _on_book_button_pressed() -> void:
-	get_tree().current_scene.get_node("%Map").disabled = false
 	queue_free()
+	get_parent().hide()
