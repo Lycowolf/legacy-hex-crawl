@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/yellow_text.png-e37329081e84790d45d7c4c3c5f46
 
 [params]
 
-character_ranges=PackedStringArray("\'a\'-\'z\'", "0-9", "\'.\'", "\',\'", "1-37", "\' \'")
+character_ranges=PackedStringArray("\'a\'-\'z\'", "\'0\'-\'9\'", "\'.\'", "\',\'", "1-37", "\' \'")
 kerning_pairs=PackedStringArray()
 columns=26
 rows=3

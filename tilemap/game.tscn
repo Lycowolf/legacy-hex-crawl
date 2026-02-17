@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
 [ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://chronicle.gd" id="15_400rd"]
+[ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="16_gmgd3"]
+[ext_resource type="Script" uid="uid://ciyf6wehydjtf" path="res://tilemap/stat_panel.gd" id="17_6bbr7"]
+[ext_resource type="FontFile" uid="uid://fc8l6hfuthge" path="res://img/yellow_text.png" id="17_g76si"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtuec"]
 texture = ExtResource("5_fdmae")
@@ -467,8 +470,16 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfu3c"]
+atlas = ExtResource("16_gmgd3")
+region = Rect2(150, 6, 36, 36)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xig61"]
+font = ExtResource("17_g76si")
+
 [node name="Game" type="Node2D" unique_id=1030314897]
 texture_filter = 1
+metadata/_edit_vertical_guides_ = [2340.5378]
 
 [node name="Background" type="TextureRect" parent="." unique_id=1448905383]
 self_modulate = Color(0.29, 0.21866, 0.1856, 1)
@@ -589,7 +600,84 @@ anchors_preset = 0
 offset_right = 2416.0
 offset_bottom = 1080.0
 
+[node name="StatPanel" type="NinePatchRect" parent="." unique_id=465013355]
+offset_left = 2024.0
+offset_top = 44.0
+offset_right = 2366.0
+offset_bottom = 549.0
+texture = SubResource("AtlasTexture_nfu3c")
+region_rect = Rect2(0, 0, 36, 36)
+patch_margin_left = 9
+patch_margin_top = 10
+patch_margin_right = 9
+patch_margin_bottom = 9
+script = ExtResource("17_6bbr7")
+
+[node name="Label1" type="Label" parent="StatPanel" unique_id=1653862851]
+layout_mode = 0
+offset_left = 25.69336
+offset_top = 68.0
+offset_right = 61.360046
+offset_bottom = 85.666664
+scale = Vector2(3, 3)
+text = "age"
+label_settings = SubResource("LabelSettings_xig61")
+
+[node name="Label2" type="Label" parent="StatPanel" unique_id=157395727]
+layout_mode = 0
+offset_left = 25.693604
+offset_top = 21.128952
+offset_right = 69.6936
+offset_bottom = 38.795616
+scale = Vector2(3, 3)
+text = "name"
+label_settings = SubResource("LabelSettings_xig61")
+
+[node name="Label3" type="Label" parent="StatPanel" unique_id=513726999]
+layout_mode = 0
+offset_left = 20.238953
+offset_top = 118.90909
+offset_right = 75.23895
+offset_bottom = 136.57574
+scale = Vector2(3, 3)
+text = "steps"
+label_settings = SubResource("LabelSettings_xig61")
+
+[node name="NameLabel" type="Label" parent="StatPanel" unique_id=1802899457]
+layout_mode = 0
+offset_left = 158.6106
+offset_top = 21.64473
+offset_right = 213.20276
+offset_bottom = 39.3114
+scale = Vector2(3, 3)
+text = "joe"
+label_settings = SubResource("LabelSettings_xig61")
+horizontal_alignment = 2
+
+[node name="AgeLabel" type="Label" parent="StatPanel" unique_id=44147555]
+layout_mode = 0
+offset_left = 166.31177
+offset_top = 67.56712
+offset_right = 218.54175
+offset_bottom = 85.233795
+scale = Vector2(3, 3)
+text = "18"
+label_settings = SubResource("LabelSettings_xig61")
+horizontal_alignment = 2
+
+[node name="StepLabel" type="Label" parent="StatPanel" unique_id=204677661]
+layout_mode = 0
+offset_left = 202.0777
+offset_top = 119.19441
+offset_right = 241.90686
+offset_bottom = 136.86108
+scale = Vector2(3, 3)
+text = "0"
+label_settings = SubResource("LabelSettings_xig61")
+horizontal_alignment = 2
+
 [connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
 [connection signal="choice" from="Map/Encounters/Test" to="Chronicle" method="_on_test_choice"]
 [connection signal="reached_tile" from="Horse" to="Chronicle" method="_on_horse_reached_tile"]
+[connection signal="reached_tile" from="Horse" to="StatPanel" method="_on_horse_reached_tile"]
 [connection signal="pressed" from="Chronicle" to="Chronicle" method="_on_pressed"]
