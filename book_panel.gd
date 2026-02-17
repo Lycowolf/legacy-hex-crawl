@@ -14,11 +14,13 @@ var bbcode_text: String
 @export var pages: Array[String]
 @export var current_page: int = 0:
 	set(value):
-		value = clamp(value, 0, max(len(pages) - 2, 0))
+		value = clamp(value, 0, max(len(pages) - 1, 0))
 		current_page = value
 		$TextLeft.text = pages[value]
 		if value + 1 < len(pages):
 			$TextRight.text = pages[value + 1]
+		else:
+			$TextRight.text = ""
 		if value == 0:
 			$PrevButton.hide()
 		else:
@@ -80,7 +82,7 @@ func generate_choice_buttons():
 func generate_pages():
 	pages = []
 	var max_height = $TextLeft.size.y
-	var unprocessed_text = ("[center][font size=40][b][i]" + title + "[/i][/b][/font][/center]\n\n" + text).split(" ")
+	var unprocessed_text = ("[center][font size=40][b][i]" + title + "[/i][/b][/font][/center]\n" + text).split(" ")
 	var current_arr: PackedStringArray = []
 	while true:
 		if len(current_arr) < len(unprocessed_text): # the other case will get handled by the next "if"
@@ -104,9 +106,9 @@ func _on_book_button_pressed() -> void:
 
 func _on_prev_button_pressed() -> void:
 	print("prev")
-	current_page -= 1
+	current_page -= 2
 
 
 func _on_next_button_pressed() -> void:
 	print("next")
-	current_page += 1
+	current_page += 2
