@@ -1,15 +1,26 @@
 [gd_resource type="Theme" format=3 uid="uid://dv8m50oyk20xr"]
 
 [ext_resource type="StyleBox" uid="uid://c6uo5pmibiq6u" path="res://book_button_texture.tres" id="1_diuyg"]
+[ext_resource type="FontFile" uid="uid://cxi4koq4muogl" path="res://fonts/ShantellSans-Italic-VariableFont_BNCE,INFM,SPAC,wght.ttf" id="1_pckvq"]
 [ext_resource type="StyleBox" uid="uid://dnxo48vwg1sf5" path="res://book_button_texture_active.tres" id="2_70lem"]
 
+[sub_resource type="FontVariation" id="FontVariation_s2qa8"]
+base_font = ExtResource("1_pckvq")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 500
+}
+
 [resource]
-Button/colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
-Button/colors/font_focus_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
-Button/colors/font_hover_color = Color(0.9490196, 0.9490196, 0.9490196, 0)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 0)
-Button/colors/font_pressed_color = Color(1, 1, 1, 0)
-Button/font_sizes/font_size = 5
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.01, 0.01, 0.01, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = SubResource("FontVariation_s2qa8")
 Button/styles/disabled = ExtResource("1_diuyg")
 Button/styles/focus = ExtResource("2_70lem")
 Button/styles/hover = ExtResource("2_70lem")

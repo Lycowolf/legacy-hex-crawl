@@ -1,34 +1,13 @@
 [gd_scene format=3 uid="uid://wl5pnjjlnx3d"]
 
 [ext_resource type="Theme" uid="uid://dv8m50oyk20xr" path="res://book_button_theme.tres" id="1_y6t13"]
-[ext_resource type="Script" uid="uid://bcldi1a5s0bhw" path="res://book_button.gd" id="2_vgwq1"]
 
-[node name="BookButton" type="MarginContainer" unique_id=76399862]
-z_index = 3
-offset_right = 22.0
-offset_bottom = 22.0
-scale = Vector2(6, 6)
-theme = ExtResource("1_y6t13")
-script = ExtResource("2_vgwq1")
-text = "test"
-
-[node name="Button" type="Button" parent="." unique_id=1736343280]
+[node name="Button" type="Button" unique_id=1736343280]
 texture_filter = 1
-layout_mode = 2
+offset_right = 137.0
+offset_bottom = 92.0
 size_flags_horizontal = 0
+theme = ExtResource("1_y6t13")
+toggle_mode = true
 text = "test"
 alignment = 0
-
-[node name="Label" type="Label" parent="Button" unique_id=327209918]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 4.0
-offset_top = -4.0
-offset_right = 71.0
-offset_bottom = 41.0
-grow_vertical = 2
-scale = Vector2(0.167, 0.167)
-text = "test"
-vertical_alignment = 1

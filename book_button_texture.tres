@@ -1,15 +1,14 @@
 [gd_resource type="StyleBoxTexture" format=3 uid="uid://c6uo5pmibiq6u"]
 
-[ext_resource type="Texture2D" uid="uid://k6aulunnnob8" path="res://img/UI assets (1x).png" id="1_uesbn"]
+[ext_resource type="Texture2D" uid="uid://cxnd0u2kravc0" path="res://img/UI_assets_book_buttons_x6.png" id="1_uesbn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_diuyg"]
 atlas = ExtResource("1_uesbn")
-region = Rect2(661, 822, 23, 20)
+region = Rect2(600, 36, 132, 108)
 
 [resource]
 texture = SubResource("AtlasTexture_diuyg")
-texture_margin_left = 4.0
-texture_margin_top = 5.0
-texture_margin_right = 8.0
-texture_margin_bottom = 5.0
-expand_margin_right = 2.0
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 48.0
+texture_margin_bottom = 24.0

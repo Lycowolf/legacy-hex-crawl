@@ -1,16 +1,93 @@
 [gd_resource type="Theme" format=3 uid="uid://bt668ikp1cdo"]
 
 [ext_resource type="StyleBox" uid="uid://rlbjpacx3vg2" path="res://main_ui_button_texture.tres" id="1_6w50i"]
+[ext_resource type="FontFile" uid="uid://cxi4koq4muogl" path="res://fonts/ShantellSans-Italic-VariableFont_BNCE,INFM,SPAC,wght.ttf" id="2_e1d5r"]
+[ext_resource type="StyleBox" uid="uid://7g2y1wpyaafp" path="res://main_ui_button_active_texture.tres" id="2_tw5cx"]
+[ext_resource type="FontVariation" uid="uid://b0c43b6f5dngp" path="res://fonts/handwritten_text_caveat.tres" id="3_tw5cx"]
+[ext_resource type="FontFile" uid="uid://5cb2frscb5es" path="res://fonts/ShantellSans-VariableFont_BNCE,INFM,SPAC,wght.ttf" id="5_n0b8l"]
+
+[sub_resource type="FontVariation" id="FontVariation_n0b8l"]
+base_font = ExtResource("2_e1d5r")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 600
+}
+opentype_features = {
+1801810542: 1
+}
+
+[sub_resource type="FontVariation" id="FontVariation_ida4b"]
+base_font = ExtResource("5_n0b8l")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 800
+}
+opentype_features = {
+1801810542: 1
+}
+
+[sub_resource type="FontVariation" id="FontVariation_w4l11"]
+base_font = ExtResource("2_e1d5r")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 800
+}
+opentype_features = {
+1801810542: 1
+}
+
+[sub_resource type="FontVariation" id="FontVariation_n1gve"]
+base_font = ExtResource("2_e1d5r")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 500
+}
+opentype_features = {
+1801810542: 1
+}
+
+[sub_resource type="FontVariation" id="FontVariation_iwbm1"]
+base_font = ExtResource("5_n0b8l")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 500
+}
+opentype_features = {
+1801810542: 1
+}
 
 [resource]
-Button/colors/font_color = Color(0, 0, 0, 0)
-Button/font_sizes/font_size = 5
+Button/colors/font_color = Color(0, 0, 0, 0.972549)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("3_tw5cx")
+Button/styles/hover = ExtResource("2_tw5cx")
+Button/styles/hover_pressed = ExtResource("2_tw5cx")
 Button/styles/normal = ExtResource("1_6w50i")
+Button/styles/pressed = ExtResource("2_tw5cx")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 40
+Label/fonts/font = SubResource("FontVariation_n0b8l")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/bold_font_size = 32
 RichTextLabel/font_sizes/bold_italics_font_size = 32
 RichTextLabel/font_sizes/italics_font_size = 32
 RichTextLabel/font_sizes/mono_font_size = 32
 RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_ida4b")
+RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_w4l11")
+RichTextLabel/fonts/italics_font = SubResource("FontVariation_n1gve")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_iwbm1")

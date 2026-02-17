@@ -8,6 +8,14 @@
 atlas = ExtResource("2_cncom")
 region = Rect2(11, 801, 234, 158)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej6pq"]
+atlas = ExtResource("2_cncom")
+region = Rect2(279, 776, 24, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cncom"]
+atlas = ExtResource("2_cncom")
+region = Rect2(465, 776, 24, 21)
+
 [node name="BookPanel" type="TextureRect" unique_id=1160056287]
 unique_name_in_owner = true
 texture_filter = 1
@@ -21,58 +29,82 @@ offset_bottom = 1031.0
 theme = ExtResource("1_ej6pq")
 texture = SubResource("AtlasTexture_jyko4")
 script = ExtResource("3_uhph8")
+pages = Array[String](["[center][font size=40][b][i]Lorem Ipsum[/i][/b][/font][/center]
+
+Nemo et officia quibusdam nobis quisquam molestias laborum. Saepe rerum possimus fuga facere. Atque qui ullam dolor repellendus. Adipisci quia repellat est. Itaque magni rerum reiciendis est numquam voluptates vela. 
+Consequatur deleniti deserunt et neque repellendus. Animi perspiciatis ut incidunt accusamus incidunt est corrupti. Praesentium mollitia quasi quo.", "
+Est ipsa quia rem similique illo laborum ut. Vel quod quae optio corporis iste voluptas veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
+Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate", "repellendus.
+Veritatis veritatis quis et dolore. Vel ratione dolorum commodi totam. Quis ea molestiae porro. Error repellendus cumque ducimus. 
+"])
 choices = Dictionary[String, Callable]({
 "Test long text": Callable(),
 "Test1": Callable()
 })
-title = "Big bad encounter!"
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Harum nobis ut et fuga. Et voluptas asperiores eveniet. Illum commodi maiores ut consequuntur sunt. Veniam rem consequatur delectus optio. Error sint voluptas nulla ad quia eius ut maiores. A sint quisquam laborum laboriosam est natus.
-Porro aut itaque quo corporis. Totam labore dolor quam numquam aperiam quae et. Asperiores repellat cumque eligendi voluptatem laboriosam. Aut tenetur tempore nemo.
-
-123456789
+title = "Lorem Ipsum"
+text = "Nemo et officia quibusdam nobis quisquam molestias laborum. Saepe rerum possimus fuga facere. Atque qui ullam dolor repellendus. Adipisci quia repellat est. Itaque magni rerum reiciendis est numquam voluptates vela. 
+Consequatur deleniti deserunt et neque repellendus. Animi perspiciatis ut incidunt accusamus incidunt est corrupti. Praesentium mollitia quasi quo. 
+Est ipsa quia rem similique illo laborum ut. Vel quod quae optio corporis iste voluptas veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
+Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate repellendus.
+Veritatis veritatis quis et dolore. Vel ratione dolorum commodi totam. Quis ea molestiae porro. Error repellendus cumque ducimus. 
 "
 metadata/_edit_horizontal_guides_ = [38.0]
 metadata/_edit_vertical_guides_ = [61.0]
 
-[node name="Title" type="Label" parent="." unique_id=1421674240]
-texture_filter = 2
+[node name="PrevButton" type="TextureButton" parent="." unique_id=1201741606]
+visible = false
 layout_mode = 0
-offset_left = 124.0
-offset_top = 57.0
-offset_right = 747.0
-offset_bottom = 162.0
-theme = ExtResource("1_ej6pq")
-theme_override_font_sizes/font_size = 48
-text = "Big bad encounter!"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 87.0
+offset_top = 44.0
+offset_right = 259.0
+offset_bottom = 195.0
+texture_normal = SubResource("AtlasTexture_ej6pq")
+stretch_mode = 4
+
+[node name="NextButton" type="TextureButton" parent="." unique_id=492770911]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9480001
+anchor_top = 0.044000003
+anchor_right = 0.94900006
+anchor_bottom = 0.045
+offset_left = -170.6521
+offset_top = 0.30799484
+offset_right = -0.35107422
+offset_bottom = 150.315
+texture_normal = SubResource("AtlasTexture_cncom")
+stretch_mode = 4
 
 [node name="TextLeft" type="RichTextLabel" parent="." unique_id=335422687]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
 offset_left = 130.0
-offset_top = 175.0
+offset_top = 154.0
 offset_right = 767.0
-offset_bottom = 165.0
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Harum"
+offset_bottom = -203.0
+bbcode_enabled = true
+text = "[center][font size=40][b][i]Lorem Ipsum[/i][/b][/font][/center]
+
+Nemo et officia quibusdam nobis quisquam molestias laborum. Saepe rerum possimus fuga facere. Atque qui ullam dolor repellendus. Adipisci quia repellat est. Itaque magni rerum reiciendis est numquam voluptates vela. 
+Consequatur deleniti deserunt et neque repellendus. Animi perspiciatis ut incidunt accusamus incidunt est corrupti. Praesentium mollitia quasi quo."
 
 [node name="TextRight" type="RichTextLabel" parent="." unique_id=275714967]
-texture_filter = 2
+texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -765.0
-offset_top = 71.0
-offset_right = -112.0
-offset_bottom = -252.0
-text = "nobis ut et fuga. Et voluptas asperiores eveniet. Illum commodi maiores ut consequuntur sunt. Veniam rem consequatur delectus optio. Error sint voluptas nulla ad quia eius ut maiores. A sint quisquam laborum laboriosam est natus.
-Porro aut itaque quo corporis. Totam labore dolor quam numquam aperiam quae et. Asperiores repellat cumque eligendi voluptatem laboriosam. Aut tenetur tempore nemo.
+offset_top = 154.0
+offset_right = -128.0
+offset_bottom = -203.0
+bbcode_enabled = true
+text = "
+Est ipsa quia rem similique illo laborum ut. Vel quod quae optio corporis iste voluptas veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
+Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate"
 
-123456789
-"
+[connection signal="pressed" from="PrevButton" to="." method="_on_prev_button_pressed"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

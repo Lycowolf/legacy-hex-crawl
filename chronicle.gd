@@ -25,7 +25,7 @@ var hero_name = "Unknown Hero"
 func generate_text() -> String:
 	var event_text = ""
 	for event in events:
-		event_text += ("In the " + str(months[event[2]]) + " of " + str(event[1]) + ", " + event[3] + ".\n\n")
+		event_text += ("In the " + str(months[event[2]]) + " of " + str(event[1]) + ", " + event[3] + ". \n\n")
 	return event_text
 
 func _on_pressed() -> void:

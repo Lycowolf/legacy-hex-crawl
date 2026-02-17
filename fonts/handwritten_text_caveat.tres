@@ -1,0 +1,15 @@
+[gd_resource type="FontVariation" format=3 uid="uid://b0c43b6f5dngp"]
+
+[ext_resource type="FontFile" uid="uid://5cb2frscb5es" path="res://fonts/ShantellSans-VariableFont_BNCE,INFM,SPAC,wght.ttf" id="1_fyqeo"]
+
+[resource]
+base_font = ExtResource("1_fyqeo")
+variation_opentype = {
+1112425285: 10,
+1229866573: 50,
+1397768515: 0,
+2003265652: 500
+}
+opentype_features = {
+1801810542: 1
+}

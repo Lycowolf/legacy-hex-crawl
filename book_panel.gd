@@ -8,26 +8,42 @@ const BUTTON_HOR_OFFSET = 1612
 const BUTTON_HOR_PITCH = 7;
 const BUTTON_VERT_OFFSET = 128
 const BUTTON_VERT_PITCH = 130;
-const PAGE_LEN = 450
 
-var current_buttons: Array[BookButton] = []
+var current_buttons: Array[Button] = []
+var bbcode_text: String
+@export var pages: Array[String]
+@export var current_page: int = 0:
+	set(value):
+		value = clamp(value, 0, max(len(pages) - 2, 0))
+		current_page = value
+		$TextLeft.text = pages[value]
+		if value + 1 < len(pages):
+			$TextRight.text = pages[value + 1]
+		if value == 0:
+			$PrevButton.hide()
+		else:
+			$PrevButton.show()
+		if value >= len(pages) - 2:
+			$NextButton.hide()
+		else:
+			$NextButton.show()
+
 @export var choices : Dictionary[String, Callable]:
 	get: return choices
 	set(value):
 		choices = value
 		if is_node_ready():
 			generate_choice_buttons()
-
 @export var title: String:
 	set(value):
 		title = value
 		if is_node_ready():
-			reflow_text()
+			generate_pages()
 @export_multiline var text: String:
 	set(value):
 		text = value
 		if is_node_ready():
-			reflow_text()
+			generate_pages()
 
 func _init() -> void:
 	# just for the demo & testing
@@ -35,8 +51,11 @@ func _init() -> void:
 		choices = {"Test1": _on_book_button_pressed, "Test long text": _on_book_button_pressed}
 
 func _ready() -> void:
+	$TextLeft.text = ""
+	$TextRight.text = ""
 	generate_choice_buttons()
-	reflow_text()
+	generate_pages()
+	current_page = 0
 	set_global_position(Vector2i(60, 38), true)
 
 func generate_choice_buttons():
@@ -45,7 +64,7 @@ func generate_choice_buttons():
 	current_buttons = []
 	var i = 0
 	for choice_text in choices:
-		var button = BUTTON_SCENE.instantiate()
+		var button: Button = BUTTON_SCENE.instantiate()
 		button.text = choice_text
 		current_buttons.append(button)
 		button.position = Vector2i(
@@ -53,22 +72,41 @@ func generate_choice_buttons():
 			BUTTON_VERT_OFFSET + i * BUTTON_VERT_PITCH
 		)
 		print(choices)
-		button.set_listener(choices[choice_text])
-		button.set_listener(_on_book_button_pressed)
+		button.pressed.connect(choices[choice_text])
+		button.pressed.connect(_on_book_button_pressed)
 		add_child(button)
 		i += 1
 
-# TODO: real pagination
-func reflow_text():
-	$Title.text = title
-	if len(text) < PAGE_LEN:
-		$TextLeft.text = text
-		$TextRight.text = 'blah blah blah marginalia'
-	else:
-		var word_break = text.find(' ', PAGE_LEN)
-		$TextLeft.text = text.substr(0, word_break)
-		$TextRight.text = text.substr(word_break+1)
+func generate_pages():
+	pages = []
+	var max_height = $TextLeft.size.y
+	var unprocessed_text = ("[center][font size=40][b][i]" + title + "[/i][/b][/font][/center]\n\n" + text).split(" ")
+	var current_arr: PackedStringArray = []
+	while true:
+		if len(current_arr) < len(unprocessed_text): # the other case will get handled by the next "if"
+			current_arr.append(unprocessed_text[len(current_arr)]) # add a word
+			$TextLeft.text = " ".join(current_arr)
+			if $TextLeft.get_content_height() > max_height:
+				# we just overflown the max height
+				current_arr = current_arr.slice(0, -1) # back off one word
+				pages.append(" ".join(current_arr)) # generate page
+				unprocessed_text = unprocessed_text.slice(len(current_arr)) # discard processed part
+				current_arr = []
+		else:
+			pages.append(" ".join(current_arr)) # last page
+			break
+	current_page = 0 # reset paging
 
 func _on_book_button_pressed() -> void:
 	queue_free()
 	get_parent().hide()
+
+
+func _on_prev_button_pressed() -> void:
+	print("prev")
+	current_page -= 1
+
+
+func _on_next_button_pressed() -> void:
+	print("next")
+	current_page += 1
