@@ -1,22 +1,23 @@
 [gd_scene format=4 uid="uid://bilx8v0bjqmpb"]
 
-[ext_resource type="Script" uid="uid://o8hmuutkh7o3" path="res://tilemap/map.gd" id="1_3k7wx"]
+[ext_resource type="Script" uid="uid://o8hmuutkh7o3" path="res://scripts/map.gd" id="1_3k7wx"]
+[ext_resource type="Script" uid="uid://ds25tvjldcf0b" path="res://scripts/cycle_control.gd" id="1_6bbr7"]
 [ext_resource type="TileSet" uid="uid://d2drunjitsbbk" path="res://tilemap/ground-tiles.tres" id="1_ce7x8"]
 [ext_resource type="Theme" uid="uid://bt668ikp1cdo" path="res://UI_theme.tres" id="1_dpb14"]
 [ext_resource type="Texture2D" uid="uid://ds00ka3fx3ti" path="res://img/wood-pixelized.jpg" id="1_rtuec"]
 [ext_resource type="TileSet" uid="uid://cerwfnbtrtma4" path="res://tilemap/water-tiles.tres" id="2_x6q1n"]
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
 [ext_resource type="Texture2D" uid="uid://b5nqiikfhjy0k" path="res://img/horse_4.png" id="4_x6q1n"]
-[ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://encounter.gd" id="5_d01ds"]
+[ext_resource type="Script" uid="uid://356bsp4u8juu" path="res://scripts/encounter.gd" id="5_d01ds"]
 [ext_resource type="Texture2D" uid="uid://b4ig162uk0nh5" path="res://tilemap/ground_atlas.png" id="5_fdmae"]
-[ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://character.gd" id="5_jpnab"]
+[ext_resource type="Script" uid="uid://xxhrvt2u6dtt" path="res://scripts/character.gd" id="5_jpnab"]
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
-[ext_resource type="Script" uid="uid://cqsai0r3pihno" path="res://tilemap/test_encounter.gd" id="7_400rd"]
+[ext_resource type="Script" uid="uid://cqsai0r3pihno" path="res://scripts/encounters/test_encounter.gd" id="7_400rd"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
-[ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://chronicle.gd" id="15_400rd"]
+[ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://scripts/chronicle.gd" id="15_400rd"]
 [ext_resource type="Texture2D" uid="uid://cdal1x5yb3ft3" path="res://img/UI_assets_misc_buttons_x4.png" id="16_g76si"]
-[ext_resource type="Script" uid="uid://ciyf6wehydjtf" path="res://tilemap/stat_panel.gd" id="17_6bbr7"]
+[ext_resource type="Script" uid="uid://ciyf6wehydjtf" path="res://scripts/stat_panel.gd" id="17_6bbr7"]
 [ext_resource type="LabelSettings" uid="uid://ompevrdjytrd" path="res://stat_label_settings.tres" id="18_g76si"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtuec"]
@@ -480,6 +481,7 @@ region = Rect2(600, 24, 144, 144)
 
 [node name="Game" type="Node2D" unique_id=1030314897]
 texture_filter = 1
+script = ExtResource("1_6bbr7")
 metadata/_edit_vertical_guides_ = [2340.5378]
 
 [node name="Background" type="TextureRect" parent="." unique_id=1448905383]
@@ -552,6 +554,7 @@ title = "Test encounter"
 text = "this is not a drill, this is a test"
 
 [node name="Horse" type="AnimatedSprite2D" parent="." unique_id=287884568]
+unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(362, 581)
 scale = Vector2(4, 4)
@@ -586,6 +589,14 @@ offset_bottom = 37.579956
 grow_horizontal = 0
 texture = SubResource("AtlasTexture_xig61")
 
+[node name="DieButton" type="Button" parent="." unique_id=1899799068]
+offset_left = 2032.3337
+offset_top = 800.13074
+offset_right = 2360.0022
+offset_bottom = 888.0327
+theme = ExtResource("1_dpb14")
+text = "DEBUG: die"
+
 [node name="PopupUILayer" type="Control" parent="." unique_id=221035753]
 unique_name_in_owner = true
 visible = false
@@ -593,6 +604,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 2416.0
 offset_bottom = 1080.0
+mouse_force_pass_scroll_events = false
 
 [node name="StatPanel" type="NinePatchRect" parent="." unique_id=465013355]
 unique_name_in_owner = true
@@ -727,8 +739,11 @@ layout_mode = 2
 text = "blah"
 label_settings = ExtResource("18_g76si")
 
+[connection signal="news" from="." to="Chronicle" method="_on_game_news"]
+[connection signal="time_passes" from="." to="Chronicle" method="_on_time_passes"]
 [connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
 [connection signal="choice" from="Map/Encounters/Test" to="Chronicle" method="_on_test_choice"]
 [connection signal="reached_tile" from="Horse" to="Chronicle" method="_on_horse_reached_tile"]
 [connection signal="reached_tile" from="Horse" to="StatPanel" method="_on_horse_reached_tile"]
 [connection signal="pressed" from="Chronicle" to="Chronicle" method="_on_pressed"]
+[connection signal="pressed" from="DieButton" to="." method="_on_die_button_pressed"]

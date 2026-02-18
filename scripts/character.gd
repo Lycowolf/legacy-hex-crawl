@@ -49,6 +49,9 @@ func go_back():
 
 @warning_ignore("unused_parameter")
 func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
+	if not button in [MouseButton.MOUSE_BUTTON_LEFT, MouseButton.MOUSE_BUTTON_RIGHT]:
+		return
+		
 	if walking:
 		print('Wait, Im still walking')
 		$Reaction.play("dude")

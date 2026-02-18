@@ -37,18 +37,21 @@ var bbcode_text: String
 	get: return choices
 	set(value):
 		choices = value
-		if is_node_ready():
-			generate_choice_buttons()
+		if not is_node_ready():
+			await ready
+		generate_choice_buttons()
 @export var title: String:
 	set(value):
 		title = value
-		if is_node_ready():
-			generate_pages()
+		if not is_node_ready():
+			await ready
+		generate_pages()
 @export_multiline var text: String:
 	set(value):
 		text = value
-		if is_node_ready():
-			generate_pages()
+		if not is_node_ready():
+			await ready
+		generate_pages()
 
 func _init() -> void:
 	# just for the demo & testing
@@ -60,7 +63,7 @@ func _ready() -> void:
 	$TextRight.text = ""
 	generate_choice_buttons()
 	generate_pages()
-	current_page = len(pages) -1
+	current_page = 0
 	set_global_position(Vector2i(60, 38), true)
 
 func generate_choice_buttons():

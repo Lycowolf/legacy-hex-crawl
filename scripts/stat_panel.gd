@@ -1,6 +1,6 @@
 extends NinePatchRect
 
-var stat_label_settings = load("res://stat_label_settings.tres")
+var stat_label_settings = preload("res://stat_label_settings.tres")
 
 @onready var name_label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameLabel
 @onready var age_label = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/AgeLabel
@@ -35,12 +35,11 @@ func _ready() -> void:
 	reset() # TODO move to main game init
 
 func reset():
-	hero_name = ['George', 'Ringo', 'Paul', 'John'].pick_random()
-	age = randi_range(15, 25)
+	#hero_name = ['George', 'Ringo', 'Paul', 'John'].pick_random()
+	#age = randi_range(15, 25)
 	steps = 0
 	
-	traits = ['Beginner\'s luck', 'Folly of youth']
-	land_traits = ['Starting spot']
+	traits = []
 	
 func _on_horse_reached_tile(tile: Vector2i) -> void:
 	age += 1
