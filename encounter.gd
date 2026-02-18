@@ -4,7 +4,7 @@ extends Node2D
 class_name Encounter
 
 @export var title: String
-@export var text: String
+@export_multiline var text: String
 var choices: Dictionary[String, Callable] # override in subclasses
 
 const marker_scene = preload("res://encounter_marker.tscn")
@@ -18,7 +18,7 @@ func _ready() -> void:
 		marker.transform = marker.transform.scaled(Vector2(4.0, 4.0))
 		add_child(marker)
 
-func trigger_encounter():
+func trigger():
 	var book = book_panel_scene.instantiate()
 	book.title = title
 	book.text = text

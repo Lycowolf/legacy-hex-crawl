@@ -29,6 +29,8 @@ func generate_text() -> String:
 	return event_text
 
 func _on_pressed() -> void:
+	$NewFlag.hide()
+	
 	var book = book_panel_scene.instantiate()
 	book.title = "Chronicle of the realm"
 	book.text = generate_text()
@@ -44,7 +46,8 @@ func _on_pressed() -> void:
 	
 	
 func ingame_event(type, text):
-	events.append([type, current_year, current_month, "The " + hero_name + " " + text])
+	events.append([type, current_year, current_month, %StatPanel.hero_name + " " + text])
+	$NewFlag.show()
 
 func _dummy():
 	pass

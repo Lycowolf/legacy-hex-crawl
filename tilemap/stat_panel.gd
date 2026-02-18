@@ -8,7 +8,15 @@ var stat_label_settings = load("res://stat_label_settings.tres")
 @onready var trait_list = $MarginContainer/VBoxContainer/MarginContainer/TraitContainer
 @onready var land_list = $MarginContainer/VBoxContainer/MarginContainer2/LandContainer
 
-var traits = []
+var traits = [] :
+	set(x):
+		traits = x
+		update_traits()
+		
+var land_traits = [] :
+	set(x):
+		land_traits = x
+		update_land()
 
 var hero_name : String:
 	set(x):
@@ -31,16 +39,14 @@ func reset():
 	age = randi_range(15, 25)
 	steps = 0
 	
-	add_trait('Beginner\'s luck')
-	add_trait('Folly of youth')
-	update_traits()
-	update_land(['Starting spot'])
+	traits = ['Beginner\'s luck', 'Folly of youth']
+	land_traits = ['Starting spot']
 	
 func _on_horse_reached_tile(tile: Vector2i) -> void:
 	age += 1
 	steps += 1
 	
-	update_land(%Map.land_at(tile))
+	land_traits = %Map.land_at(tile)
 
 func update_traits():
 	for child in trait_list.get_children():
@@ -52,7 +58,7 @@ func update_traits():
 		label.label_settings = stat_label_settings
 		trait_list.add_child(label)
 
-func update_land(land_traits: Array):
+func update_land():
 	for child in land_list.get_children():
 		child.queue_free()
 		
@@ -62,15 +68,8 @@ func update_land(land_traits: Array):
 		label.label_settings = stat_label_settings
 		land_list.add_child(label)
 
-func add_trait(new_trait: String):
-	traits.append(new_trait)
-	traits.sort()
-	update_traits()
-
-func delete_trait(old_trait: String):
-	var idx = traits.find(old_trait)
-	traits.remove_at(idx)
-	update_traits()
-
 func check_trait(target_trait: String, _difficulty: int):
 	return traits.has(target_trait)
+
+func check_land(target_trait: String):
+	return land_traits.has(target_trait)

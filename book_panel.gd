@@ -60,7 +60,7 @@ func _ready() -> void:
 	$TextRight.text = ""
 	generate_choice_buttons()
 	generate_pages()
-	current_page = 0
+	current_page = len(pages) -1
 	set_global_position(Vector2i(60, 38), true)
 
 func generate_choice_buttons():

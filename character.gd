@@ -78,7 +78,7 @@ func on_reached_tile(tile_pos: Vector2i):
 	
 	var encounters = map.get_encounters(tile_pos)
 	for encounter in encounters:
-		encounter.trigger_encounter()
+		encounter.trigger()
 	
 	# encounter might also trigger:
 	#	go_back()
