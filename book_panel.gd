@@ -14,6 +14,9 @@ var bbcode_text: String
 @export var pages: Array[String]
 @export var current_page: int = 0:
 	set(value):
+		if not is_node_ready():
+			await ready
+		
 		value = clamp(value, 0, max(len(pages) - 1, 0))
 		current_page = value
 		$TextLeft.text = pages[value]

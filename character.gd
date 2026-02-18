@@ -74,7 +74,7 @@ func on_reached_tile(tile_pos: Vector2i):
 	target_path.pop_front()
 	walking = not target_path.is_empty()
 	%Map.reveal(my_pos, 1)
-	reached_tile.emit()
+	reached_tile.emit(tile_pos)
 	
 	var encounters = map.get_encounters(tile_pos)
 	for encounter in encounters:

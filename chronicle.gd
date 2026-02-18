@@ -54,7 +54,7 @@ func _on_test_choice(type: String, text: String) -> void:
 	ingame_event(type, text)
 
 
-func _on_horse_reached_tile() -> void:
+func _on_horse_reached_tile(_pos: Vector2i) -> void:
 	if (current_month + 1) >= len(months):
 		current_year += 1
 		current_month = 0

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://ompevrdjytrd"]
+
+[ext_resource type="FontVariation" uid="uid://b0c43b6f5dngp" path="res://fonts/handwritten_text_caveat.tres" id="1_54cdo"]
+
+[resource]
+font = ExtResource("1_54cdo")
+font_size = 30
+font_color = Color(0.00069389754, 0.00069389766, 0.0006938976, 1)

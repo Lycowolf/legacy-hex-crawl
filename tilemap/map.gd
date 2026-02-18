@@ -73,6 +73,24 @@ func is_accessible(pos: Vector2i, walk : bool =true, swim : bool =false, fly : b
 		
 	return can_walk and walk
 
+func land_at(pos: Vector2i):
+	var land_traits = []
+	var gnd_data = $Ground.get_cell_tile_data(pos)
+	var wtr_data = $WaterAndRoads.get_cell_tile_data(pos)
+	
+	if not gnd_data:
+		land_traits.append('Void')
+	else:
+		land_traits.append(gnd_data.get_custom_data('terrain'))
+	
+	if wtr_data:
+		for land_trait in ['Water', 'Road', 'Bridge']:
+			if wtr_data.get_custom_data(land_trait.to_lower()):
+				land_traits.append(land_trait)
+	
+	return land_traits
+	
+
 func fog_everywhere():
 	const FOG = Vector2i(14, 3)
 	
