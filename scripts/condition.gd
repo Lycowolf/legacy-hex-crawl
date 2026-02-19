@@ -2,7 +2,7 @@
 extends Label
 class_name ConditionWidget
 
-signal condition_critical
+signal condition_critical(condition_name: String)
 
 @export var condition_name: String:
 	set(x):

@@ -47,6 +47,9 @@ func reset():
 	#age = randi_range(15, 25)
 	steps = 0
 	
+	for con in conditions:
+		conditions[con].value = 0
+	
 	traits = []
 	
 func _on_horse_reached_tile(tile: Vector2i) -> void:
@@ -54,6 +57,25 @@ func _on_horse_reached_tile(tile: Vector2i) -> void:
 	steps += 1
 	
 	land_traits = %Map.land_at(tile)
+	
+	if land_traits[0] == 'Desert':
+		conditions['Thirst'].value += 1
+	else:
+		conditions['Thirst'].value -= 1
+	
+	if land_traits.has('Water'):
+		conditions['Thirst'].value = 0
+	
+	if land_traits[0] in ['Forest', 'Tundra', 'Mountains']:
+		if not land_traits.has('Road'):
+			conditions['Lost'].value += 1
+		else:
+			conditions['Lost'].value -= 1
+	else:
+		conditions['Lost'].value = 0
+	
+	if land_traits[0] == 'Swamp':
+		conditions['Poison'].value += 1
 
 func update_traits():
 	for child in trait_list.get_children():
