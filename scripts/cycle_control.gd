@@ -64,8 +64,8 @@ func _on_condition_critical(condition: String) -> void:
 			book.text = 'You are completely lost. You have not seen another human for years. Sometimes you kinda forgot here are other humans'
 
 			var choices: Dictionary[String, Callable] = {
-				"Keep ok wandering": _wander_more,
-				'Become Yetti': _become_yetti,
+				"Keep on wandering": _wander_more,
+				'Become a Yetti': _become_yetti,
 				'Give up': _give_up,
 				}
 			book.choices = choices
