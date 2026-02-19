@@ -80,8 +80,8 @@ func generate_choice_buttons():
 			BUTTON_VERT_OFFSET + i * BUTTON_VERT_PITCH
 		)
 		print(choices)
-		button.pressed.connect(choices[choice_text])
 		button.pressed.connect(_on_book_button_pressed)
+		button.pressed.connect(choices[choice_text])
 		add_child(button)
 		i += 1
 

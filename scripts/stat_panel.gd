@@ -39,12 +39,8 @@ func _ready() -> void:
 	for child in $MarginContainer/VBoxContainer.get_children():
 		if child is ConditionWidget:
 			conditions[child.condition_name] = child
-	
-	print(conditions)
 
 func reset():
-	#hero_name = ['George', 'Ringo', 'Paul', 'John'].pick_random()
-	#age = randi_range(15, 25)
 	steps = 0
 	
 	for con in conditions:

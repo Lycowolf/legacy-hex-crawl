@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cwrqjcldahk8m" path="res://img/20250405emoticons-SheetAngry.png" id="6_otts3"]
 [ext_resource type="Script" uid="uid://cqsai0r3pihno" path="res://scripts/encounters/test_encounter.gd" id="7_400rd"]
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
+[ext_resource type="Script" uid="uid://c8752go0r5afl" path="res://scripts/encounters/bridge_sentinel.gd" id="8_4u8hs"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
 [ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://scripts/chronicle.gd" id="15_400rd"]
 [ext_resource type="Texture2D" uid="uid://cdal1x5yb3ft3" path="res://img/UI_assets_misc_buttons_x4.png" id="16_g76si"]
@@ -530,7 +531,7 @@ mouse_filter = 1
 
 [node name="Bridge" type="Node2D" parent="Map/Encounters" unique_id=1547502021]
 position = Vector2(729, 721)
-script = ExtResource("5_d01ds")
+script = ExtResource("8_4u8hs")
 title = "Bridge"
 text = "over troubled water"
 
@@ -762,6 +763,8 @@ label_settings = ExtResource("18_g76si")
 [connection signal="news" from="." to="Chronicle" method="_on_game_news"]
 [connection signal="time_passes" from="." to="Chronicle" method="_on_time_passes"]
 [connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
+[connection signal="choice" from="Map/Encounters/Bridge" to="Chronicle" method="_on_test_choice"]
+[connection signal="consequence" from="Map/Encounters/Bridge" to="." method="hero_is_finished"]
 [connection signal="choice" from="Map/Encounters/Test" to="Chronicle" method="_on_test_choice"]
 [connection signal="reached_tile" from="Horse" to="Chronicle" method="_on_horse_reached_tile"]
 [connection signal="reached_tile" from="Horse" to="StatPanel" method="_on_horse_reached_tile"]
