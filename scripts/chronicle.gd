@@ -49,7 +49,7 @@ func _on_pressed() -> void:
 	
 	
 func ingame_event(type, event_text):
-	events.append([type, current_year, current_month, %StatPanel.hero_name + " " + event_text])
+	events.append([type, current_year, current_month, event_text])
 	$NewFlag.show()
 
 func _dummy():

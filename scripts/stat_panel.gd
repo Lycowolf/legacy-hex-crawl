@@ -8,6 +8,8 @@ var stat_label_settings = preload("res://stat_label_settings.tres")
 @onready var trait_list = $MarginContainer/VBoxContainer/MarginContainer/TraitContainer
 @onready var land_list = $MarginContainer/VBoxContainer/MarginContainer2/LandContainer
 
+@onready var conditions : Dictionary[String, ConditionWidget]
+
 var traits = [] :
 	set(x):
 		traits = x
@@ -33,6 +35,12 @@ var steps: int:
 
 func _ready() -> void:
 	reset() # TODO move to main game init
+	
+	for child in $MarginContainer/VBoxContainer.get_children():
+		if child is ConditionWidget:
+			conditions[child.condition_name] = child
+	
+	print(conditions)
 
 func reset():
 	#hero_name = ['George', 'Ringo', 'Paul', 'John'].pick_random()

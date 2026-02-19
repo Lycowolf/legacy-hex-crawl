@@ -26,10 +26,10 @@ func start_new_cycle():
 	%Map.fog_everywhere()
 	%Map.reveal(starting_place)
 	
-	news.emit('NG+', ' has started his journey')
+	news.emit('NG+', %StatPanel.hero_name + ' has started his journey')
 
 func hero_is_finished():
-	news.emit('Funeral', ' has died to button press')
+	news.emit('Funeral', %StatPanel.hero_name + ' has died to button press')
 	update_map()
 	play_transition()
 	start_new_cycle()
@@ -38,7 +38,7 @@ func update_map():
 	print('removing ephemeral encounters')
 	print('creating the grave of last hero (if dead)')
 	print('applying consequences')
-	print('progressing long-term')
+	print('progressing long-term events')
 
 func play_transition():
 	# show some cool UI

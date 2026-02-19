@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bfssxev4ya5fg"]
+
+[ext_resource type="LabelSettings" uid="uid://ompevrdjytrd" path="res://stat_label_settings.tres" id="1_2bllr"]
+[ext_resource type="Script" uid="uid://f5ms6nno8niy" path="res://scripts/condition.gd" id="2_wis6k"]
+[ext_resource type="Texture2D" uid="uid://cdal1x5yb3ft3" path="res://img/UI_assets_misc_buttons_x4.png" id="3_3tpl4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wwgj"]
+atlas = ExtResource("3_3tpl4")
+region = Rect2(4, 848, 184, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc2cs"]
+resource_local_to_scene = true
+atlas = ExtResource("3_3tpl4")
+region = Rect2(208, 860, 160, 8)
+margin = Rect2(14, 11.5, 27, 27)
+filter_clip = true
+
+[node name="ThirstCondition" type="Label" unique_id=669302128]
+theme_type_variation = &"TooltipLabel"
+text = "Thirst"
+label_settings = ExtResource("1_2bllr")
+script = ExtResource("2_wis6k")
+condition_name = "Thirst"
+
+[node name="Progress" type="TextureProgressBar" parent="." unique_id=1922763949]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -161.01025
+grow_horizontal = 0
+grow_vertical = 2
+max_value = 5.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 5
+stretch_margin_right = 10
+stretch_margin_bottom = 5
+texture_under = SubResource("AtlasTexture_7wwgj")
+texture_progress = SubResource("AtlasTexture_uc2cs")
