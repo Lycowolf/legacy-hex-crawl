@@ -532,8 +532,10 @@ mouse_filter = 1
 [node name="Bridge" type="Node2D" parent="Map/Encounters" unique_id=1547502021]
 position = Vector2(729, 721)
 script = ExtResource("8_4u8hs")
-title = "Bridge"
-text = "over troubled water"
+title = "A knight on a bridge"
+text = "'You find a bridge, and a knight who guards it. He's annoyingly in the way.'
+Hey, traveller! he shouts. You must answer three questions to prove your worth.
+The first is ... What is your quest?"
 
 [node name="City" type="Node2D" parent="Map/Encounters" unique_id=1230947346]
 position = Vector2(808, 343)

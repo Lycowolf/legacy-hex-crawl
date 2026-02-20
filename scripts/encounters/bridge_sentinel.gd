@@ -21,26 +21,22 @@ func _answer1():
 	choice.emit("bridge_trial", %StatPanel.hero_name + " answered correctly")
 	text += "\n\nThe second is ... What's your name?"
 	choices = {%StatPanel.hero_name: _answer2, "I don't know": _dunno}
-	trigger_again()
+	trigger()
 	
 func _answer2():
 	choice.emit("bridge_trial", %StatPanel.hero_name + " answered correctly again")
 	text += "\n\nAnd the third is ... What's your favorite color?"
 	var color = ['Blue', '#FF00FF', 'Moss green'].pick_random()
 	choices = {color: _answer3, "I don't know": _dunno}
-	trigger_again()
+	trigger()
 
 func _answer3():
 	choice.emit("bridge_trial", %StatPanel.hero_name + " aced the bridge exam")
 	text += "\n\nSatisfied, the knight lets you pass"
 	choices = {'Finally': _done}
-	trigger_again()
+	trigger()
 
 func _done():
 	# remove the encounter
 	self.queue_free()
 	%PopupUILayer.hide()
-
-func trigger_again():
-	# TODO make it so the book does not close
-	trigger()
