@@ -35,7 +35,6 @@ Consequatur deleniti deserunt et neque repellendus. Animi perspiciatis ut incidu
 Est ipsa quia rem similique illo laborum ut. Vel quod quae optio corporis iste voluptas", "veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
 Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate repellendus. 
 Veritatis veritatis quis et dolore. Vel ratione dolorum commodi totam. Quis ea molestiae porro. Error repellendus cumque ducimus. "])
-current_page = 1
 choices = Dictionary[String, Callable]({
 "Test long text": Callable(),
 "Test1": Callable()
@@ -50,6 +49,7 @@ metadata/_edit_horizontal_guides_ = [38.0]
 metadata/_edit_vertical_guides_ = [61.0]
 
 [node name="PrevButton" type="TextureButton" parent="." unique_id=1201741606]
+visible = false
 layout_mode = 0
 offset_left = 87.0
 offset_top = 44.0
@@ -83,9 +83,10 @@ offset_top = 154.0
 offset_right = 767.0
 offset_bottom = -203.0
 bbcode_enabled = true
-text = "veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
-Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate repellendus. 
-Veritatis veritatis quis et dolore. Vel ratione dolorum commodi totam. Quis ea molestiae porro. Error repellendus cumque ducimus. "
+text = "[center][font size=40][b][i]Lorem Ipsum[/i][/b][/font][/center]
+Nemo et officia quibusdam nobis quisquam molestias laborum. Saepe rerum possimus fuga facere. Atque qui ullam dolor repellendus. Adipisci quia repellat est. Itaque magni rerum reiciendis est numquam voluptates vela. 
+Consequatur deleniti deserunt et neque repellendus. Animi perspiciatis ut incidunt accusamus incidunt est corrupti. Praesentium mollitia quasi quo. 
+Est ipsa quia rem similique illo laborum ut. Vel quod quae optio corporis iste voluptas"
 
 [node name="TextRight" type="RichTextLabel" parent="." unique_id=275714967]
 texture_filter = 1
@@ -99,6 +100,9 @@ offset_top = 154.0
 offset_right = -128.0
 offset_bottom = -203.0
 bbcode_enabled = true
+text = "veniam. Et temporibus deleniti sit quia neque ab. Aspernatur soluta nam doloribus temporibus modi atque ut pariatur. Explicabo iure cum perspiciatis. Vel nesciunt qui corporis. 
+Dolorem reprehenderit fugit dolorum quasi repellat eos sed hic. Ut molestiae cumque placeat nam eos ut sit. Modi rerum a eaque. Cumque et et doloribus magnam et voluptate repellendus. 
+Veritatis veritatis quis et dolore. Vel ratione dolorum commodi totam. Quis ea molestiae porro. Error repellendus cumque ducimus. "
 
 [connection signal="pressed" from="PrevButton" to="." method="_on_prev_button_pressed"]
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

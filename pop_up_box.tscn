@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cg5d12m0tk025"]
+
+[ext_resource type="Theme" uid="uid://bt668ikp1cdo" path="res://UI_theme.tres" id="1_c1uko"]
+[ext_resource type="Texture2D" uid="uid://cdal1x5yb3ft3" path="res://img/UI_assets_misc_buttons_x4.png" id="2_oee3b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1uko"]
+atlas = ExtResource("2_oee3b")
+region = Rect2(1164, 16, 168, 160)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oee3b"]
+texture = SubResource("AtlasTexture_c1uko")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[node name="PopUpBox" type="PanelContainer" unique_id=1111272127]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -411.0
+offset_top = -98.0
+offset_right = 411.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c1uko")
+theme_override_styles/panel = SubResource("StyleBoxTexture_oee3b")
+
+[node name="Label" type="Label" parent="." unique_id=2120222399]
+layout_mode = 2
+text = "Lorem Ipsum"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
