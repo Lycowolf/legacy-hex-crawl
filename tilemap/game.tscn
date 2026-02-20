@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://d2drunjitsbbk" path="res://tilemap/ground-tiles.tres" id="1_ce7x8"]
 [ext_resource type="Theme" uid="uid://bt668ikp1cdo" path="res://UI_theme.tres" id="1_dpb14"]
 [ext_resource type="Texture2D" uid="uid://ds00ka3fx3ti" path="res://img/wood-pixelized.jpg" id="1_rtuec"]
+[ext_resource type="Script" uid="uid://doikuivpaxe8q" path="res://scripts/encounters/untimely_end.gd" id="2_aewo6"]
 [ext_resource type="TileSet" uid="uid://cerwfnbtrtma4" path="res://tilemap/water-tiles.tres" id="2_x6q1n"]
 [ext_resource type="TileSet" uid="uid://brwfncnl667j1" path="res://tilemap/places-tiles.tres" id="4_cpd6c"]
 [ext_resource type="Texture2D" uid="uid://b5nqiikfhjy0k" path="res://img/horse_4.png" id="4_x6q1n"]
@@ -16,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dw13y10sgpdw0" path="res://img/20250405emoticons-SheetFrustrated.png" id="7_cjsgn"]
 [ext_resource type="Script" uid="uid://c8752go0r5afl" path="res://scripts/encounters/bridge_sentinel.gd" id="8_4u8hs"]
 [ext_resource type="Texture2D" uid="uid://bu2ueyub7d6gr" path="res://img/20250405emoticons-SheetCant.png" id="8_jyko4"]
+[ext_resource type="Script" uid="uid://iure3mg5ry1d" path="res://scripts/encounters/sea_cave.gd" id="12_63ffx"]
+[ext_resource type="Script" uid="uid://u8aeff3ri13h" path="res://scripts/encounters/sharks.gd" id="13_loo8l"]
 [ext_resource type="Script" uid="uid://bvvvsh24tufaj" path="res://scripts/chronicle.gd" id="15_400rd"]
 [ext_resource type="Texture2D" uid="uid://cdal1x5yb3ft3" path="res://img/UI_assets_misc_buttons_x4.png" id="16_g76si"]
 [ext_resource type="Script" uid="uid://ciyf6wehydjtf" path="res://scripts/stat_panel.gd" id="17_6bbr7"]
@@ -486,6 +489,9 @@ texture_filter = 1
 script = ExtResource("1_6bbr7")
 metadata/_edit_vertical_guides_ = [2340.5378]
 
+[node name="UntimelyEnds" type="Node2D" parent="." unique_id=1703576373]
+script = ExtResource("2_aewo6")
+
 [node name="Background" type="TextureRect" parent="." unique_id=1448905383]
 self_modulate = Color(0.29, 0.21866, 0.1856, 1)
 texture_filter = 2
@@ -516,7 +522,6 @@ tile_map_data = PackedByteArray("AAAKAAUAAAAFAAEAAAAHAAMAAAABAAEAAAAFAAIAAAAOAAA
 tile_set = ExtResource("4_cpd6c")
 
 [node name="FogOfWar" type="TileMapLayer" parent="Map" unique_id=200545836]
-visible = false
 scale = Vector2(0.66, 0.66)
 tile_map_data = PackedByteArray("AAADAAYAAAAOAAMAAAADAAcAAAAOAAMAAAAEAAYAAAAOAAMAAAADAAUAAAAOAAMAAAAFAAYAAAAOAAMAAAAGAAYAAAAOAAMAAAAHAAYAAAAOAAMAAAAHAAUAAAAOAAMAAAAIAAYAAAAOAAMAAAAIAAUAAAAOAAMAAAAEAAcAAAAOAAMAAAACAAEAAAAOAAMAAAACAAIAAAAOAAMAAAADAAIAAAAOAAMAAAACAAYAAAAOAAMAAAABAAYAAAAOAAMAAAABAAIAAAAOAAMAAAAAAAUAAAAOAAMAAAAAAAQAAAAOAAMAAAAAAAMAAAAOAAMAAAAAAAIAAAAOAAMAAAAAAAEAAAAOAAMAAAABAAAAAAAOAAMAAAAAAAAAAAAOAAMAAAACAAAAAAAOAAMAAAADAAAAAAAOAAMAAAAEAAAAAAAOAAMAAAAFAAAAAAAOAAMAAAAGAAAAAAAOAAMAAAAHAAAAAAAOAAMAAAAIAAAAAAAOAAMAAAAJAAAAAAAOAAMAAAAKAAAAAAAOAAMAAAALAAAAAAAOAAMAAAAMAAAAAAAOAAMAAAALAAEAAAAOAAMAAAAMAAEAAAAOAAMAAAAMAAIAAAAOAAMAAAAMAAMAAAAOAAMAAAAMAAQAAAAOAAMAAAAMAAUAAAAOAAMAAAAMAAYAAAAOAAMAAAAMAAcAAAAOAAMAAAALAAcAAAAOAAMAAAAKAAcAAAAOAAMAAAAJAAcAAAAOAAMAAAAIAAcAAAAOAAMAAAAHAAcAAAAOAAMAAAAGAAcAAAAOAAMAAAAFAAcAAAAOAAMAAAAFAAUAAAAOAAMAAAAEAAUAAAAOAAMAAAAEAAQAAAAOAAMAAAADAAMAAAAOAAMAAAACAAcAAAAOAAMAAAABAAcAAAAOAAMAAAAAAAcAAAAOAAMAAAAAAAYAAAAOAAMAAAABAAEAAAAOAAMAAAADAAEAAAAOAAMAAAAEAAEAAAAOAAMAAAAFAAEAAAAOAAMAAAAGAAIAAAAOAAMAAAAGAAEAAAAOAAMAAAAHAAIAAAAOAAMAAAAIAAIAAAAOAAMAAAAIAAEAAAAOAAMAAAAJAAIAAAAOAAMAAAAJAAEAAAAOAAMAAAAKAAEAAAAOAAMAAAAHAAEAAAAOAAMAAAAFAAIAAAAOAAMAAAAEAAIAAAAOAAMAAAAEAAMAAAAOAAMAAAAFAAMAAAAOAAMAAAAFAAQAAAAOAAMAAAAGAAQAAAAOAAMAAAAHAAQAAAAOAAMAAAAGAAMAAAAOAAMAAAAGAAUAAAAOAAMAAAAIAAQAAAAOAAMAAAAIAAMAAAAOAAMAAAAJAAMAAAAOAAMAAAAKAAIAAAAOAAMAAAALAAIAAAAOAAMAAAALAAMAAAAOAAMAAAALAAQAAAAOAAMAAAALAAUAAAAOAAMAAAALAAYAAAAOAAMAAAAKAAYAAAAOAAMAAAAJAAYAAAAOAAMAAAAHAAMAAAAOAAMAAAAJAAQAAAAOAAMAAAAJAAUAAAAOAAMAAAAKAAUAAAAOAAMAAAAKAAQAAAAOAAMAAAAKAAMAAAAOAAMAAAA=")
 tile_set = SubResource("TileSet_400rd")
@@ -557,6 +562,16 @@ scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("7_400rd")
 title = "Test encounter"
 text = "this is not a drill, this is a test"
+
+[node name="SeaCave" type="Node2D" parent="Map/Encounters" unique_id=310953077]
+position = Vector2(883.12805, 974.1793)
+script = ExtResource("12_63ffx")
+metadata/_custom_type_script = "uid://356bsp4u8juu"
+
+[node name="Sharks" type="Node2D" parent="Map/Encounters" unique_id=1779488168]
+position = Vector2(1021.1279, 974.3589)
+script = ExtResource("13_loo8l")
+metadata/_custom_type_script = "uid://356bsp4u8juu"
 
 [node name="Horse" type="AnimatedSprite2D" parent="." unique_id=287884568]
 unique_name_in_owner = true

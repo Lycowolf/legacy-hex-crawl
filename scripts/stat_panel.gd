@@ -98,3 +98,7 @@ func check_trait(target_trait: String, _difficulty: int):
 
 func check_land(target_trait: String):
 	return land_traits.has(target_trait)
+
+func add_trait(new_trait: String):
+	traits.append(new_trait)
+	update_traits()

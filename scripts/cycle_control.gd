@@ -1,7 +1,7 @@
 extends Node
 
-signal news
-signal time_passes
+signal news(type: String, text: String)
+signal time_passes(years: int, months: int)
 
 func _ready():
 	start_new_cycle()
@@ -53,10 +53,10 @@ func _on_condition_critical(condition: String) -> void:
 			
 	match condition:	
 		'Thirst', 'Poison':
-			print('You died of ' + condition)
-			hero_is_finished(' has died of ' + condition)
+			$UntimelyEnds.dying_message('You died of ' + condition.to_lower(), condition)
 		'Lost':
 			%StatPanel.conditions['Lost'].value = 0
+			#$UntimelyEnds.get_lost() TODO still not working
 			print('You are hopelessly lost')
 		
 			var book = load("res://book_panel.tscn").instantiate()
@@ -82,8 +82,10 @@ func _wander_more():
 	$StatPanel.age += how_long
 	$StatPanel.traits.append('Wanderer')
 	$StatPanel.update_traits()
-	%Horse.my_pos = Vector2i(randi_range(3, 12), randi_range(1, 6))
-	%Horse.global_position = %Map.map2pos(%Horse.my_pos)
+	var found_on = Vector2i(randi_range(3, 12), randi_range(1, 6))
+	%Horse.my_pos = found_on
+	%Horse.global_position = %Map.map2pos(found_on)
+	%Map.reveal(found_on)
 
 func _become_yetti():
 	print('Screw it, you never wanted to be a civilized human anyway. You heed the call of the woods and became a wild man.')
