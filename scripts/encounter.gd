@@ -10,6 +10,9 @@ var choices: Dictionary[String, Callable] # override in subclasses
 const marker_scene = preload("res://encounter_marker.tscn")
 const book_panel_scene = preload("res://book_panel.tscn")
 
+signal news(type: String, text: String)
+signal time_passes(years: int, months: int)
+
 func _ready() -> void:
 	if not choices:
 		choices = {"Close": _on_book_close}
@@ -17,6 +20,9 @@ func _ready() -> void:
 		var marker = marker_scene.instantiate()
 		marker.transform = marker.transform.scaled(Vector2(4.0, 4.0))
 		add_child(marker)
+	
+	news.connect(%Chronicle._on_game_news)
+	time_passes.connect(%Chronicle._on_time_passes)
 
 func trigger():
 	var book = book_panel_scene.instantiate()

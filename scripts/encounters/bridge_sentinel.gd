@@ -2,7 +2,6 @@
 
 extends Encounter
 
-signal choice(type: String, text: String)
 signal consequence(cause_of_death: String)
 
 func _ready() -> void:
@@ -14,24 +13,29 @@ func _ready() -> void:
 	choices = {quest: _answer1, "I don't know": _dunno}
 
 func _dunno():
-	choice.emit("bridge_trial", %StatPanel.hero_name + " couldn't answer and fell to his doom")
+	text = %StatPanel.hero_name + " couldn't answer and fell to his doom"
+	choices = {"Aaaaa..": _splash}
+	trigger()
+
+func _splash():
+	news.emit("bridge_trial", %StatPanel.hero_name + " couldn't answer and fell to his doom")
 	consequence.emit(" died of Monty Python reference")
 	
 func _answer1():
-	choice.emit("bridge_trial", %StatPanel.hero_name + " answered correctly")
+	news.emit("bridge_trial", %StatPanel.hero_name + " answered correctly")
 	text += "\n\nThe second is ... What's your name?"
 	choices = {%StatPanel.hero_name: _answer2, "I don't know": _dunno}
 	trigger()
 	
 func _answer2():
-	choice.emit("bridge_trial", %StatPanel.hero_name + " answered correctly again")
+	news.emit("bridge_trial", %StatPanel.hero_name + " answered correctly again")
 	text += "\n\nAnd the third is ... What's your favorite color?"
 	var color = ['Blue', '#FF00FF', 'Moss green'].pick_random()
 	choices = {color: _answer3, "I don't know": _dunno}
 	trigger()
 
 func _answer3():
-	choice.emit("bridge_trial", %StatPanel.hero_name + " aced the bridge exam")
+	news.emit("bridge_trial", %StatPanel.hero_name + " aced the bridge exam")
 	text += "\n\nSatisfied, the knight lets you pass"
 	choices = {'Finally': _done}
 	trigger()

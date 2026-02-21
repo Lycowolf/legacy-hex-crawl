@@ -622,6 +622,7 @@ script = ExtResource("19_loo8l")
 songs = Array[AudioStream]([ExtResource("21_hswm3"), ExtResource("20_230ss"), ExtResource("22_45e48"), ExtResource("23_tm3vb"), ExtResource("24_1c8t7"), ExtResource("25_xk7x5"), ExtResource("26_gpo56")])
 
 [node name="Chronicle" type="Button" parent="." unique_id=1550040505]
+unique_name_in_owner = true
 offset_left = 2036.0
 offset_top = 943.0
 offset_right = 2362.0
@@ -822,9 +823,7 @@ grow_vertical = 2
 [connection signal="news" from="." to="Chronicle" method="_on_game_news"]
 [connection signal="time_passes" from="." to="Chronicle" method="_on_time_passes"]
 [connection signal="tile_click" from="Map" to="Horse" method="_on_map_tile_click"]
-[connection signal="choice" from="Map/Encounters/Bridge" to="Chronicle" method="_on_test_choice"]
 [connection signal="consequence" from="Map/Encounters/Bridge" to="." method="hero_is_finished"]
-[connection signal="choice" from="Map/Encounters/Test" to="Chronicle" method="_on_test_choice"]
 [connection signal="reached_tile" from="Horse" to="Chronicle" method="_on_horse_reached_tile"]
 [connection signal="reached_tile" from="Horse" to="StatPanel" method="_on_horse_reached_tile"]
 [connection signal="news" from="EventSequencer" to="Chronicle" method="_on_game_news"]

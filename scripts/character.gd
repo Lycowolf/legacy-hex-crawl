@@ -52,14 +52,20 @@ func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 	if not button in [MouseButton.MOUSE_BUTTON_LEFT, MouseButton.MOUSE_BUTTON_RIGHT]:
 		return
 		
+	var path: Array[Vector2i]
+	var prefix: Array[Vector2i]
+	
 	if walking:
-		print('Wait, Im still walking')
 		$Reaction.play("dude")
-		return
-		
-	var path = map.find_path(self.my_pos, map_pos)
-	if path:  
-		self.target_path = path
+		path = map.find_path(self.target_path[0], map_pos)
+		prefix = [self.target_path[0]]
+	else:
+		path = map.find_path(self.my_pos, map_pos)
+		prefix = []
+	
+	if path:
+		self.target_path = prefix
+		prefix.append_array(path)
 		walking = true
 	else:
 		print('Too far')
@@ -82,6 +88,8 @@ func on_reached_tile(tile_pos: Vector2i):
 	var encounters = map.get_encounters(tile_pos)
 	for encounter in encounters:
 		if encounter:  # TODO remove non-existing encounters from index
+			target_path = []
+			walking = false
 			encounter.trigger()
 	
 	# encounter might also trigger:

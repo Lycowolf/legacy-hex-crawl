@@ -92,5 +92,5 @@ func _become_yetti():
 	hero_is_finished(' vanished into woods and became a Yetti')
 
 func _give_up():
-	print('You kinda just lie down and stay where youy are. Its not bad place, but it kinda limits heroic opportunities.')
+	print('You kinda just lie down and stay where you are. Its not bad place, but it kinda limits heroic opportunities.')
 	hero_is_finished(' got lost and gave up.')
