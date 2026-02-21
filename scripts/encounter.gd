@@ -28,21 +28,21 @@ func trigger():
 	%PopupUILayer.add_child(book)
 	%PopupUILayer.show()
 
-func trigger_message(message: String, add=false):
-	if add:
-		text += '\n\n' + message
-	else:
-		text = message
-	
-	choices = {"Close": _on_book_close}
+func trigger_message(message: String, close_label="Close"):
+	text = message
+	choices = {close_label: _on_book_close}
 	trigger()
+
+func trigger_message_add(message: String, close_label="Close"):
+	trigger_message(text + '\n\n' + message, close_label)
 
 func _on_book_close():
 	pass
 
 func delete_encounter():
 	var pos = %Map.pos2map(global_position)
-	%Map.encounters[pos].erase(self)
+	if %Map.encounters.has(pos):
+		%Map.encounters[pos].erase(self)
 	queue_free()
 
 func sleep_encounter():

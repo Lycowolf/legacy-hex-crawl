@@ -1,3 +1,5 @@
+@tool
+
 extends Encounter
 
 func _init() -> void:

@@ -53,3 +53,4 @@ func run() -> void:
 		var cleanup: Callable = setup.call(args)
 		await $Timer.timeout
 		cleanup.call()
+	%PopupUILayer.hide()

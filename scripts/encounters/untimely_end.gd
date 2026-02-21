@@ -1,3 +1,4 @@
+@tool
 extends Encounter
 
 var death_cause: String

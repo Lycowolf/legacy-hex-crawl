@@ -1,3 +1,4 @@
+@tool
 extends Encounter
 
 func _init():
@@ -12,20 +13,19 @@ func _init():
 	
 func loot():
 	%StatPanel.add_trait('Magic Pearl')
-	trigger_message('You carefully pocket the treasure and go on your way', true)
+	trigger_message_add('You carefully pocket the treasure and go on your way')
 	delete_encounter()
 
 func eat():
 	%StatPanel.add_trait('Merfolk')
-	trigger_message('The pearl looks delicious, somehow. You swallow it before thinking too much.' +\
+	trigger_message_add('The pearl looks delicious, somehow. You swallow it before thinking too much.' +\
 	'\nSuddenly, scales start to grow on your body, and fins as well. You turned into one of merfolk!' +\
-		'\n\nNOTE: Merfolk can swim, but quickly get thirsty outside water.',
-	true)
+		'\n\nNOTE: Merfolk can swim, but quickly get thirsty outside water.')
 	delete_encounter()
 
 func leave():
-	text += 'This looks suspicious, you do not touch anything and leave'
-	choices = {'Leave': %Horse.go_back()}
+	text += '\n\nThis looks suspicious, you do not touch anything and leave'
+	choices = {'Leave': %Horse.go_back}
 	sleep_encounter()
 	trigger()
-	
+		
