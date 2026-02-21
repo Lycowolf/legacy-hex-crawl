@@ -73,7 +73,9 @@ func _on_map_tile_click(map_pos: Vector2i, button: MouseButton) -> void:
 
 @warning_ignore("unused_parameter")
 func on_reached_border(old_pos: Vector2i, new_pos: Vector2i):
-	if not %Map.is_accessible(new_pos, true):
+	var walk = true
+	var swim = %StatPanel.traits.has('Merfolk')
+	if not %Map.is_accessible(new_pos, walk, swim):
 		print('Too scary, not going')
 		go_back()
 

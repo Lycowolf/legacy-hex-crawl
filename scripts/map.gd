@@ -59,7 +59,8 @@ func is_accessible(pos: Vector2i, walk : bool =true, swim : bool =false, fly : b
 	var gnd_data = $Ground.get_cell_tile_data(pos)
 	var wtr_data = $WaterAndRoads.get_cell_tile_data(pos)
 	
-	var needs_swim = wtr_data and wtr_data.get_custom_data('need_swim')
+	var needs_swim = (wtr_data and wtr_data.get_custom_data('need_swim')) or \
+					 (gnd_data and gnd_data.get_custom_data('terrain') == 'Sea')
 	var can_walk = gnd_data and gnd_data.get_custom_data('walk')
 	
 	if not gnd_data:
@@ -68,7 +69,7 @@ func is_accessible(pos: Vector2i, walk : bool =true, swim : bool =false, fly : b
 	if fly:
 		return true
 		
-	if can_walk and needs_swim:
+	if needs_swim:
 		return swim
 		
 	return can_walk and walk
@@ -82,11 +83,15 @@ func land_at(pos: Vector2i):
 		land_traits.append('Void')
 	else:
 		land_traits.append(gnd_data.get_custom_data('terrain'))
+		if gnd_data.get_custom_data('water'):
+			land_traits.append('Water')
 	
 	if wtr_data:
 		for land_trait in ['Water', 'Road', 'Bridge']:
-			if wtr_data.get_custom_data(land_trait.to_lower()):
+			if wtr_data.get_custom_data(land_trait.to_lower()) and not land_traits.has(land_trait):
 				land_traits.append(land_trait)
+	
+	
 	
 	return land_traits
 	

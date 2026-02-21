@@ -53,24 +53,31 @@ func _on_horse_reached_tile(tile: Vector2i) -> void:
 	steps += 1
 	
 	land_traits = %Map.land_at(tile)
-	
-	if land_traits[0] == 'Desert':
-		conditions['Thirst'].value += 1
+	terms_and_conditions(land_traits)
+
+func terms_and_conditions(land):
+	if traits.has('Merfolk'):
+		if not land.has('Water'):
+			conditions['Thirst'].value += 1		
 	else:
-		conditions['Thirst'].value -= 1
+		if not land[0] == ('Desert'):
+			conditions['Thirst'].value -= 1
 	
-	if land_traits.has('Water'):
+	if land[0] == 'Desert':
+			conditions['Thirst'].value += 1
+	
+	if land.has('Water'):
 		conditions['Thirst'].value = 0
 	
-	if land_traits[0] in ['Forest', 'Tundra', 'Mountains']:
-		if not land_traits.has('Road'):
+	if land[0] in ['Forest', 'Tundra', 'Mountains']:
+		if not land.has('Road'):
 			conditions['Lost'].value += 1
 		else:
 			conditions['Lost'].value -= 1
 	else:
 		conditions['Lost'].value = 0
 	
-	if land_traits[0] == 'Swamp':
+	if land[0] == 'Swamp':
 		conditions['Poison'].value += 1
 
 func update_traits():
